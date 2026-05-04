@@ -1,20 +1,115 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AboutController!{% endblock %}
+{% block title %}À propos{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container py-5">
+    <h1 class="h2 mb-4">À propos</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <section class="mb-5">
+        <h2 class="h3 mb-3">Présentation</h2>
+        <p class="lead mb-0">
+            Je m'appelle Matthieu, j'ai 24 ans et je suis passionné par le développement web depuis plusieurs années. Depuis le 15 avril 2025, j'ai créé ma micro-entreprise afin de proposer mes services aux particuliers comme aux entreprises.
+        </p>
+    </section>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/xampp/htdocs/Matthieu-THUET/Matthieu-THUET/src/Controller/AboutController.php</code></li>
-        <li>Your template at <code>C:/xampp/htdocs/Matthieu-THUET/Matthieu-THUET/templates/about/index.html.twig</code></li>
-    </ul>
+    <section class="mb-5">
+        <h2 class="h3 mb-3">Parcours</h2>
+
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h3 class="h5 mb-1">Développeur web stagiaire (2025, 6 mois)</h3>
+                <p class="text-muted mb-2">Agence web</p>
+                <ul class="mb-0">
+                    <li>Application web de gestion de locations de garages</li>
+                    <li>Développement PHP (pattern MVC)</li>
+                    <li>Conception et mise en place d’une base de données MySQL</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h3 class="h5 mb-1">Développeur web stagiaire (2023, 4 mois)</h3>
+                <p class="text-muted mb-2">Association</p>
+                <ul class="mb-0">
+                    <li>Refonte d’un site sous Symfony 5</li>
+                    <li>Intégration frontend (HTML, Twig) et finalisation de l’interface</li>
+                    <li>Participation au backend (PHP, MySQL)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="h5 mb-1">Développeur web stagiaire (2021, 2 mois)</h3>
+                <p class="text-muted mb-2">Agence de communication</p>
+                <ul class="mb-0">
+                    <li>Création d’un site WordPress pour une association</li>
+                    <li>Intégration de pages HTML à partir de maquettes</li>
+                    <li>Contributions sur plusieurs projets clients</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="h3 mb-3">Compétences</h2>
+
+        <div class="row">
+            <div class="col-12 col-md-6 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="h5 mb-2">Développement</h3>
+                        <ul class="mb-0">
+                            <li>PHP (MVC, objet), WordPress</li>
+                            <li>JavaScript, Vue.js</li>
+                            <li>HTML5 / CSS3, Responsive, Bootstrap</li>
+                            <li>SQL, MySQL</li>
+                            <li>C# .NET / ASP.NET</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="h5 mb-2">Outils &amp; méthodes</h3>
+                        <ul class="mb-0">
+                            <li>Apache, Docker</li>
+                            <li>VS Code, Git, GitHub</li>
+                            <li>Merise, UML</li>
+                            <li>Agile : Scrum, Kanban</li>
+                            <li>Anglais : niveau intermédiaire (B1)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="h3 mb-3">Formation</h2>
+        <ul class="mb-0">
+            <li>2023–2025 : Développeur Web et Web Mobile (niveau 5) — obtention du titre professionnel</li>
+            <li>2023 : Autoformation JavaScript et PHP orienté objet (cours en ligne)</li>
+            <li>2020–2023 : Développeur Web et Web Mobile — validation d’un CCP “Développer la partie Frontend d’une application Web ou Web Mobile sécurisée”</li>
+            <li>2020 : Bac STMG (mention bien)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="h3 mb-3">Projets</h2>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <ul class="mb-0">
+                    <li>Création d’un site vitrine HTML/CSS pour présenter des constructions Minecraft (premières réalisations).</li>
+                    <li>2023 : Développement d’un site passerelle pour récupérer automatiquement des données d’un éditeur (Flight Simulator) afin d’alimenter des simulations — PHP, HTML, CSS.</li>
+                    <li>Maintenance d’un site associatif (mise à jour et suivi technique).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock %}
