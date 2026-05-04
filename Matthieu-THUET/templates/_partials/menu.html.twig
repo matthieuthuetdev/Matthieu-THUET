@@ -16,6 +16,12 @@
                     <a class="nav-link" href="{{ path('app_about') }}">A propo</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ services_url|default('#') }}">Mes services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ clients_url|default('#') }}">Mes clients</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ portfolio_url|default('#') }}" target="_blank" rel="noopener noreferrer">Portfolio</a>
                 </li>
                 <li class="nav-item">
@@ -28,3 +34,4 @@
         </div>
     </div>
 </nav>
+
