@@ -4,42 +4,39 @@
 
 {% block body %}
 <div class="container py-5">
-    <div class="d-flex justify-content-start">
-        <span class="badge badge-secondary px-3 py-2">Accueil</span>
-    </div>
-
-    <header class="text-center my-4">
+    <header class="text-left my-4">
         <h1 class="display-4 mb-2">Matthieu THUET</h1>
-        <h2 class="h4 text-muted mb-3">Je me présente</h2>
-        <p class="lead mb-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <h2 class="h2 mb-3">Je me présente</h2>
+        <p class="lead mb-4">
+            Je m'appelle Matthieu, j'ai 24 ans et je suis passionné par le développement web depuis plusieurs années. Depuis le 15 avril 2025, j'ai créé ma micro-entreprise afin de proposer mes services aux particuliers comme aux entreprises.
         </p>
+        <a class="btn btn-primary" href="{{ path('app_about') }}">En apprendre plus</a>
     </header>
 
-    <section class="my-5">
+    <section class="my-5" id="services">
         <h2 class="h3 mb-4">Mes services</h2>
 
         <div class="row">
-            <div class="col-12 col-md-6 mb-4">
+            <div class="col-12 col-md-6 mb-4" id="service-creation-site">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body d-flex flex-column">
                         <h3 class="h5 card-title">Création de site web sur mesure</h3>
                         <p class="card-text flex-grow-1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+                            Vous êtes un particulier ou une entreprise et vous souhaitez créer un site web pour mettre en avant votre activité (ou tout autre projet) ? Je vous accompagne de l'idée à la mise en ligne avec un site sur mesure, clair, moderne et évolutif.
                         </p>
-                        <a class="btn btn-primary align-self-start" href="{{ path('app_contact_form') }}">Découvrir</a>
+                        <a class="btn btn-primary align-self-start" href="{{ path('app_services') }}#service-creation-site">Découvrir</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 mb-4">
+            <div class="col-12 col-md-6 mb-4" id="service-accessibilite">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body d-flex flex-column">
                         <h3 class="h5 card-title">Consulting en accessibilité de site web et application mobile</h3>
                         <p class="card-text flex-grow-1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+                            Je vous propose d'analyser votre site web ou votre application afin de la rendre plus accessible à tous les handicaps, avec une spécialisation pour le handicap visuel. Étant moi-même déficient visuel, je suis particulièrement sensible à ce sujet et je suis prêt à vous accompagner pour améliorer durablement votre site web ou votre application mobile.
                         </p>
-                        <a class="btn btn-primary align-self-start" href="{{ path('app_contact_form') }}">Découvrir</a>
+                        <a class="btn btn-primary align-self-start" href="{{ path('app_services') }}#service-accessibilite">Découvrir</a>
                     </div>
                 </div>
             </div>
@@ -47,23 +44,17 @@
     </section>
 
     <section class="my-5">
-        <div class="d-flex align-items-end justify-content-between mb-4">
-            <h2 class="h3 mb-0">Ils m'ont fait confiance</h2>
-            <a class="btn btn-outline-secondary" href="{{ path('app_about') }}">Voir tout</a>
-        </div>
+        <h2 class="h3 mb-4">Ils m'ont fait confiance</h2>
 
         <div class="row">
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body d-flex flex-column">
-                        <h3 class="h5 card-title">Client 1</h3>
+                        <h3 class="h5 card-title">IDS le Phare</h3>
                         <p class="card-text flex-grow-1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ils m'ont demandé de consulter l'accessibilité de leur nouveau site pour une ludothèque, avec des fonctionnalités d'emprunt de jeux de société et de livres en ligne.
                         </p>
-                        <div class="mb-3">
-                            <span class="badge badge-info">Création de site web sur mesure</span>
-                        </div>
-                        <a class="btn btn-primary align-self-start" href="{{ path('app_about') }}">Découvrir</a>
+                        <strong class="d-block mb-3">Consulting en accessibilité web</strong>
                     </div>
                 </div>
             </div>
@@ -71,32 +62,18 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body d-flex flex-column">
-                        <h3 class="h5 card-title">Client 2</h3>
+                        <h3 class="h5 card-title">Christophe Kippelen</h3>
                         <p class="card-text flex-grow-1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Création d’un site WordPress avec une page d’accueil et une page de contact.
                         </p>
-                        <div class="mb-3">
-                            <span class="badge badge-info">Accessibilité</span>
-                        </div>
-                        <a class="btn btn-primary align-self-start" href="{{ path('app_about') }}">Découvrir</a>
+                        <strong class="d-block mb-3">Site WordPress</strong>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body d-flex flex-column">
-                        <h3 class="h5 card-title">Client 3</h3>
-                        <p class="card-text flex-grow-1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                        <div class="mb-3">
-                            <span class="badge badge-info">Création de site web sur mesure</span>
-                        </div>
-                        <a class="btn btn-primary align-self-start" href="{{ path('app_about') }}">Découvrir</a>
-                    </div>
-                </div>
-            </div>
+        <div class="d-flex justify-content-center mt-2">
+            <a class="btn btn-primary" href="{{ path('app_clients') }}">Voir tout</a>
         </div>
     </section>
 </div>
