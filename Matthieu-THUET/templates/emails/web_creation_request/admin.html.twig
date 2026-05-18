@@ -1,0 +1,14 @@
+<p><strong>Une nouvelle demande de création de site web est arrivée !</strong></p>
+<p>Voilà les infos de la personne et son projet :</p>
+
+<ul>
+  <li><strong>Prénom :</strong> {{ request.firstName }}</li>
+  <li><strong>Nom :</strong> {{ request.name }}</li>
+  <li><strong>Entreprise :</strong> {{ request.companyName ?: '—' }}</li>
+  <li><strong>E-mail :</strong> {{ request.emailAddress }}</li>
+  <li><strong>Titre du projet :</strong> {{ request.projectTitle }}</li>
+</ul>
+
+<p><strong>Description du projet :</strong></p>
+<p>{{ request.shortProjectDescription|nl2br }}</p>
+

@@ -1,0 +1,12 @@
+<p><strong>Une nouvelle demande de consulting accessibilité est arrivée !</strong></p>
+<p>Voilà les infos de la personne :</p>
+
+<ul>
+  <li><strong>Prénom :</strong> {{ request.firstName }}</li>
+  <li><strong>Nom :</strong> {{ request.name }}</li>
+  <li><strong>Entreprise :</strong> {{ request.companyName ?: '—' }}</li>
+  <li><strong>E-mail :</strong> {{ request.emailAddress }}</li>
+  <li><strong>URL du site :</strong> {{ request.webSiteUrl ?: '—' }}</li>
+  <li><strong>Nom de l’application :</strong> {{ request.appName ?: '—' }}</li>
+</ul>
+
