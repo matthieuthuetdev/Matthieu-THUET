@@ -1,0 +1,16 @@
+<p>Bonjour.</p>
+<p>Votre message a bien été transmis à Matthieu THUET, une réponse par mail vous sera apportée dans les meilleurs délais.</p>
+
+<p><strong>Récapitulatif de votre demande :</strong></p>
+
+<ul>
+  <li><strong>Prénom :</strong> {{ contact.firstName }}</li>
+  <li><strong>Nom :</strong> {{ contact.name }}</li>
+  <li><strong>Entreprise :</strong> {{ contact.companyName ?: '—' }}</li>
+  <li><strong>E-mail :</strong> {{ contact.emailAddress }}</li>
+  <li><strong>Sujet :</strong> {{ contact.subject }}</li>
+</ul>
+
+<p><strong>Message :</strong></p>
+<p>{{ contact.content|nl2br }}</p>
+
