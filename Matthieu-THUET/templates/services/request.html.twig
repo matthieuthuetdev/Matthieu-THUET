@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demander mes services{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <h1 class="h2 mb-4">Demander mes services</h1>
+
+    <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+            <a class="btn btn-primary btn-lg btn-block" href="{{ path('app_web_creation_request') }}">
+                Demande - Création de site web
+            </a>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+            <a class="btn btn-primary btn-lg btn-block" href="{{ path('app_accessibility_consulting_request') }}">
+                Demande - Consulting accessibilité
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
