@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+  <h1 class="mb-4">Dashboard</h1>
+
+  <div class="row">
+    <div class="col-12 col-md-4 mb-3">
+      <a class="btn btn-primary btn-block btn-lg" href="{{ path('app_dashboard_contacts') }}">Demandes de contact</a>
+    </div>
+    <div class="col-12 col-md-4 mb-3">
+      <a class="btn btn-primary btn-block btn-lg" href="{{ path('app_dashboard_accessibility_consulting_requests') }}">Demandes consulting accessibilité</a>
+    </div>
+    <div class="col-12 col-md-4 mb-3">
+      <a class="btn btn-primary btn-block btn-lg" href="{{ path('app_dashboard_web_creation_requests') }}">Demandes création de site</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
