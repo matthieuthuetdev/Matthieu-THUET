@@ -15,31 +15,12 @@
     <section class="my-5">
         <h2 class="h3 mb-4">Ils m'ont fait confiance</h2>
 
-        <div class="row">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body d-flex flex-column">
-                        <h3 class="h5 card-title">IDS le Phare</h3>
-                        <p class="card-text flex-grow-1">
-                            Ils m'ont demandé de consulter l'accessibilité de leur nouveau site pour une ludothèque, avec des fonctionnalités d'emprunt de jeux de société et de livres en ligne.
-                        </p>
-                        <strong class="d-block mb-3">Consulting en accessibilité web</strong>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body d-flex flex-column">
-                        <h3 class="h5 card-title">Christophe Kippelen</h3>
-                        <p class="card-text flex-grow-1">
-                            Création d’un site WordPress avec une page d’accueil et une page de contact.
-                        </p>
-                        <strong class="d-block mb-3">Site WordPress</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include '_partials/clients_grid.html.twig' with {
+            clients: clients,
+            columns_md: 4,
+            show_description: true,
+            show_recommendation: false
+        } %}
     </section>
 </div>
 {% endblock %}
