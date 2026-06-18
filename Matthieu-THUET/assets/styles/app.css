@@ -1,1 +1,19 @@
 
+/* Clients */
+.client-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 96px;
+}
+
+.client-logo {
+    max-height: 96px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.client-recommendation {
+    margin-bottom: 1rem;
+    color: #495057;
+}

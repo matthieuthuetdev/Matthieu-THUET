@@ -1,0 +1,49 @@
+{# Parameters:
+   - clients: array of clients (see ClientsCatalog)
+   - columns_md: int (optional, default: 4)
+   - show_description: bool (optional, default: false)
+   - show_recommendation: bool (optional, default: true)
+#}
+
+{% set columns_md = columns_md|default(4) %}
+{% set show_description = show_description|default(false) %}
+{% set show_recommendation = show_recommendation|default(true) %}
+
+<div class="row">
+    {% for client in clients %}
+        <div class="col-12 col-md-{{ columns_md }} mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    {% if client.image %}
+                        <div class="client-logo-wrap mb-3">
+                            <img
+                                class="client-logo"
+                                src="{{ asset(client.image) }}"
+                                alt="Logo de {{ client.name }}"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                    {% endif %}
+
+                    <h3 class="h5 card-title mb-2">{{ client.name }}</h3>
+
+                    {% if show_recommendation and client.recommendation %}
+                        <p class="client-recommendation flex-grow-1">
+                            “{{ client.recommendation }}”
+                        </p>
+                    {% elseif show_description and client.description %}
+                        <p class="card-text flex-grow-1">
+                            {{ client.description }}
+                        </p>
+                    {% else %}
+                        <div class="flex-grow-1"></div>
+                    {% endif %}
+
+                    <strong class="d-block mb-0">{{ client.category }}</strong>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
