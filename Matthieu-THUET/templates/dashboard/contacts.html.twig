@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard - Contacts{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="h3 mb-0">Demandes de contact</h1>
+    <a class="btn btn-outline-secondary" href="{{ path('app_dashboard') }}">Retour dashboard</a>
+  </div>
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success" role="alert">{{ message }}</div>
+  {% endfor %}
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Entreprise</th>
+          <th>Email</th>
+          <th>Sujet</th>
+          <th>Message</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.firstName }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.companyName ?: '—' }}</td>
+            <td>{{ item.emailAddress }}</td>
+            <td>{{ item.subject }}</td>
+            <td style="max-width: 420px;">{{ item.content }}</td>
+            <td class="text-right">
+              <form method="post" action="{{ path('app_dashboard_traiter_contact', {id: item.id}) }}" onsubmit="return confirm('Supprimer cette demande ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('traiter_contact_' ~ item.id) }}">
+                <button class="btn btn-sm btn-danger" type="submit">Traiter</button>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="8" class="text-center text-muted">Aucune demande</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+

@@ -15,4 +15,10 @@ final class ServicesController extends AbstractController
             'controller_name' => 'ServicesController',
         ]);
     }
+
+    #[Route('/services/demande', name: 'app_services_request')]
+    public function request(): Response
+    {
+        return $this->render('services/request.html.twig');
+    }
 }
