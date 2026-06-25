@@ -1,10 +1,101 @@
+body {
+    margin: 0;
+    background: #08111f;
+    color: #ffffff;
+}
 
-/* Clients */
+.home-panel {
+    min-height: 100vh;
+    padding: 4rem 0;
+}
+
+.home-panel-hero {
+    background: #08203a;
+}
+
+.home-panel-about {
+    background: #12365f;
+}
+
+.home-panel-clients {
+    background: #18535b;
+}
+
+.home-panel-contact {
+    background: #000000;
+}
+
+.page-panel {
+    min-height: 100vh;
+}
+
+.page-panel-clients {
+    background: #18535b;
+}
+
+.page-panel-services {
+    background: #08203a;
+}
+
+.page-panel-contact {
+    background: #000000;
+}
+
+.page-card {
+    border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.home-plus-link {
+    color: #d4e6ff;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+.home-plus-link:hover,
+.home-plus-link:focus {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.home-plus-arrow {
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-left: 0.45rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-1px);
+}
+
+.home-kicker {
+    letter-spacing: 0.16em;
+}
+
+.home-photo-shell {
+    width: min(30rem, 80vw);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.home-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+}
+
 .client-logo-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 96px;
+}
+
+.client-logo-wrap-home {
+    justify-content: center;
+    height: 110px;
 }
 
 .client-logo {
@@ -13,7 +104,30 @@
     object-fit: contain;
 }
 
-.client-recommendation {
-    margin-bottom: 1rem;
-    color: #495057;
+.home-form-checkbox input {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+.home-form-checkbox label {
+    display: inline;
+}
+
+.home-contact-block {
+    padding: 3rem;
+}
+
+@media (max-width: 991.98px) {
+    .home-panel {
+        padding: 3rem 0;
+    }
+
+    .home-photo-shell {
+        width: min(22rem, 82vw);
+        margin-bottom: 2rem;
+    }
+
+    .home-contact-block {
+        padding: 2rem 1.5rem;
+    }
 }

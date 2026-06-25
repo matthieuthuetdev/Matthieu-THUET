@@ -3,124 +3,109 @@
 {% block title %}Mes services{% endblock %}
 
 {% block body %}
-<div class="container py-5">
-    <h1 class="h2 mb-4">Mes services</h1>
+<main class="page-panel page-panel-services py-5">
+    <div class="container py-4">
+        <h1 class="display-4 font-weight-bold mb-5">Mes services</h1>
 
-    <section class="mb-5" id="service-creation-site">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h2 class="h4 mb-3">Création de sites web sur mesure</h2>
-                <p class="lead">
-                    Vous êtes un particulier ou une entreprise et vous souhaitez créer un site web pour mettre en avant votre activité (ou un projet) ? Je vous accompagne de l’idée à la mise en ligne avec un site sur mesure, clair, moderne et évolutif.
-                </p>
+        <div class="row">
+            <section class="col-12 col-lg-6 mb-4" id="service-creation-site">
+                <div class="page-card h-100 p-4">
+                    <h2 class="h2 font-weight-bold mb-3">Création de sites web sur mesure</h2>
+                    <p class="lead">
+                        Vous êtes un particulier ou une entreprise et vous souhaitez créer un site web pour mettre en avant votre activité ou un projet ? Je vous accompagne de l'idée à la mise en ligne avec un site sur mesure, clair, moderne et évolutif.
+                    </p>
 
-                <h3 class="h5 mt-4 mb-3">Parcours client</h3>
-                <ol class="mb-0">
-                    <li class="mb-2">
-                        <strong>Prise de contact</strong><br>
-                        Vous me contactez (mail, téléphone ou formulaire du site).
-                    </li>
-                    <li class="mb-2">
-                        <strong>Rendez-vous</strong><br>
-                        On échange sur vos objectifs, vos contraintes et vos contenus (textes, images, logo). À la fin, je vous propose une direction claire.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Selon votre situation</strong><br>
-                        <p class="mb-0">
-                            Dans le cas où vous avez déjà un cahier des charges ou une maquette, je m’aligne dessus et je chiffre au plus juste.
-                            Si ce n’est pas le cas, je vous guide pour clarifier le besoin et je vous indique simplement ce qu’il faut préparer (textes, images, pages) afin d’avancer sereinement.
-                            Et si vos délais sont courts, je vous dis rapidement ce qui est réaliste sur le planning.
-                        </p>
-                    </li>
-                    <li class="mb-2">
-                        <strong>Devis</strong><br>
-                        Je vous envoie mon devis, détaillé et transparent. Une fois accepté, on planifie la suite.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Validation & démarrage</strong><br>
-                        Réception du devis signé + acompte de 30%. Je vous confirme ensuite le planning et les prochaines étapes.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Développement</strong><br>
-                        Je démarre la prestation. À des étapes clés, je vous partage un lien pour suivre l’avancement et me faire vos retours. On peut aussi échanger par appel si besoin.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Rendez-vous final</strong><br>
-                        Présentation complète du site : navigation ensemble, explication des fonctionnalités, réponses aux questions.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Hébergement et maintenance</strong><br>
-                        Je peux proposer : hébergement (chez o2switch) et maintenance annuelle (devis séparé).
-                    </li>
-                    <li>
-                        <strong>Livraison et paiement</strong><br>
-                        Si pas d'hébergement/maintenance : livraison + paiement final. Si hébergement : installation + paiement. Si maintenance : paiement annuel.
-                    </li>
-                </ol>
-
-                <div class="mt-4">
-                    <a class="btn btn-primary" href="{{ path('app_contact_form') }}">Me contacter</a>
+                    <h3 class="h4 font-weight-bold mt-4 mb-3">Parcours client</h3>
+                    <ol class="mb-0 pl-3">
+                        <li class="mb-2">
+                            <strong>Prise de contact</strong><br>
+                            Vous me contactez par mail, téléphone ou formulaire.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Rendez-vous</strong><br>
+                            On échange sur vos objectifs, vos contraintes et vos contenus. À la fin, je vous propose une direction claire.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Selon votre situation</strong><br>
+                            Dans le cas où vous avez déjà un cahier des charges ou une maquette, je m'aligne dessus et je chiffre au plus juste. Si ce n'est pas le cas, je vous guide pour clarifier le besoin et je vous indique simplement ce qu'il faut préparer afin d'avancer sereinement.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Devis</strong><br>
+                            Je vous envoie mon devis, détaillé et transparent. Une fois accepté, on planifie la suite.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Validation et démarrage</strong><br>
+                            Réception du devis signé avec un acompte de 30 %, puis confirmation du planning et des prochaines étapes.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Développement</strong><br>
+                            Je démarre la prestation et je vous partage l'avancement à des étapes clés pour recueillir vos retours.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Rendez-vous final</strong><br>
+                            Présentation complète du site, navigation ensemble, explication des fonctionnalités et réponses à vos questions.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Hébergement et maintenance</strong><br>
+                            Je peux proposer un hébergement chez o2switch et une maintenance annuelle via devis séparé.
+                        </li>
+                        <li>
+                            <strong>Livraison et paiement</strong><br>
+                            Livraison finale, installation si besoin, puis règlement selon la formule choisie.
+                        </li>
+                    </ol>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section class="mb-5" id="service-accessibilite">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h2 class="h4 mb-3">Consulting en accessibilité</h2>
-                <p class="lead">
-                    J’analyse votre site web ou votre application pour améliorer son accessibilité, avec une spécialisation sur le handicap visuel. Étant moi-même déficient visuel, je suis particulièrement attentif à l’expérience réelle des utilisateurs et je vous accompagne pour améliorer durablement votre produit.
-                </p>
+            <section class="col-12 col-lg-6 mb-4" id="service-accessibilite">
+                <div class="page-card h-100 p-4">
+                    <h2 class="h2 font-weight-bold mb-3">Consulting en accessibilité</h2>
+                    <p class="lead">
+                        J'analyse votre site web ou votre application pour améliorer son accessibilité, avec une spécialisation sur le handicap visuel. Étant moi-même déficient visuel, je suis particulièrement attentif à l'expérience réelle des utilisateurs.
+                    </p>
 
-                <h3 class="h5 mt-4 mb-3">Parcours client</h3>
-                <ol class="mb-0">
-                    <li class="mb-2">
-                        <strong>Prise de contact</strong><br>
-                        Vous me contactez et me partagez le site (ou l’application) à analyser.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Analyse initiale</strong><br>
-                        Je réalise une première analyse globale (sans entrer dans le code) pour identifier les points bloquants et priorités.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Selon votre contexte</strong><br>
-                        <p class="mb-0">
-                            Dans le cas où vous avez une équipe technique, j’adapte le rapport pour faciliter la correction (exemples, priorités, échanges).
-                            Si ce n’est pas le cas, je peux vous proposer un accompagnement pour mettre en place les améliorations.
-                        </p>
-                    </li>
-                    <li class="mb-2">
-                        <strong>Devis</strong><br>
-                        Je vous envoie mon devis, avec le périmètre et les livrables. Une fois accepté, je lance l’audit.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Rapport d'audit</strong><br>
-                        Je produis un rapport détaillé d’accessibilité, avec des recommandations concrètes et priorisées.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Restitution</strong><br>
-                        Envoi du rapport + possibilité d'appel pour expliquer les résultats.
-                    </li>
-                    <li class="mb-2">
-                        <strong>Accompagnement (optionnel)</strong><br>
-                        Je peux accompagner la mise en conformité et échanger avec votre équipe (nouveau devis si besoin).
-                    </li>
-                    <li class="mb-2">
-                        <strong>Clôture</strong><br>
-                        Paiement de la facture, fin de mission si pas d’accompagnement.
-                    </li>
-                    <li>
-                        <strong>Référence</strong><br>
-                        Si vous le souhaitez, je peux vous afficher comme référence sur le site (logo/nom et prestation réalisée).
-                    </li>
-                </ol>
-
-                <div class="mt-4">
-                    <a class="btn btn-primary" href="{{ path('app_contact_form') }}">Me contacter</a>
+                    <h3 class="h4 font-weight-bold mt-4 mb-3">Parcours client</h3>
+                    <ol class="mb-0 pl-3">
+                        <li class="mb-2">
+                            <strong>Prise de contact</strong><br>
+                            Vous me contactez et me partagez le site ou l'application à analyser.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Analyse initiale</strong><br>
+                            Je réalise une première analyse globale pour identifier les points bloquants et les priorités.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Selon votre contexte</strong><br>
+                            Si vous avez une équipe technique, j'adapte le rapport pour faciliter la correction. Sinon, je peux vous proposer un accompagnement complémentaire.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Devis</strong><br>
+                            Je vous envoie mon devis avec le périmètre et les livrables. Une fois accepté, je lance l'audit.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Rapport d'audit</strong><br>
+                            Je produis un rapport détaillé avec des recommandations concrètes et priorisées.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Restitution</strong><br>
+                            Envoi du rapport et possibilité d'appel pour expliquer les résultats.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Accompagnement</strong><br>
+                            Je peux accompagner la mise en conformité et échanger avec votre équipe si besoin.
+                        </li>
+                        <li class="mb-2">
+                            <strong>Clôture</strong><br>
+                            Paiement de la facture et fin de mission si aucun accompagnement supplémentaire n'est prévu.
+                        </li>
+                        <li>
+                            <strong>Référence</strong><br>
+                            Si vous le souhaitez, je peux vous afficher comme référence sur le site.
+                        </li>
+                    </ol>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
-</div>
+    </div>
+</main>
 {% endblock %}
