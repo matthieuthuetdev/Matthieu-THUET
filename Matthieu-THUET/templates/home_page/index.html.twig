@@ -2,38 +2,100 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block navigation %}{% endblock %}
+{% block navigation %}
+<nav class="home-nav">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-between align-items-center py-3">
+            <a class="home-nav-brand" href="#bloc-about" data-home-nav-link>Matthieu THUET</a>
+            <div class="d-flex flex-wrap justify-content-center">
+                <a class="home-nav-link" href="#bloc-about" data-home-nav-link>Je me présente</a>
+                <a class="home-nav-link" href="#bloc-services" data-home-nav-link>Mes services</a>
+                <a class="home-nav-link" href="#bloc-clients" data-home-nav-link>Mes clients</a>
+                <a class="home-nav-link" href="#bloc-contact" data-home-nav-link>Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock %}
 
 {% block body %}
 <main class="home-page">
-    <section class="home-panel home-panel-about d-flex align-items-center">
-        <div class="container">
+    <div class="home-block home-block-about" id="bloc-about">
+        <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-12 col-lg-7 mb-5 mb-lg-0">
                     <h2 class="display-4 font-weight-bold mb-4">Je me présente</h2>
                     <p class="lead mb-4">
                         Je m'appelle Matthieu, j'ai 24 ans et je suis passionné par le développement web depuis plusieurs années. Depuis le 15 avril 2026, j'ai créé ma micro-entreprise afin de proposer mes services aux particuliers comme aux entreprises.
                     </p>
-                    <p class="mb-4">
+                    <p class="mb-0">
                         J'aime construire des sites lisibles, bien structurés et agréables à faire évoluer. Mon approche reste simple : comprendre le besoin, proposer quelque chose de juste et avancer avec clarté.
                     </p>
-                    <a class="home-plus-link mt-3 d-inline-flex align-items-center" href="{{ path('app_about') }}">
-                        <span>Plus d'info</span>
-                        <span class="home-plus-arrow" aria-hidden="true"></span>
-                    </a>
+                    <div class="home-info-row mt-4">
+                        <button class="home-plus-link" type="button" data-home-toggle="about" aria-expanded="false">
+                            Plus d'info
+                        </button>
+
+                        <div class="home-expandable-panel home-expandable-panel-inline" data-home-panel="about" hidden>
+                            <div class="home-expandable-inner">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 mb-4">
+                                        <div class="page-card p-4 h-100">
+                                            <h3 class="h5 font-weight-bold mb-3">Parcours</h3>
+                                            <ul class="mb-0 pl-3">
+                                                <li>Développeur web stagiaire en 2025 pendant 6 mois</li>
+                                                <li>Développeur web stagiaire en 2023 pendant 4 mois</li>
+                                                <li>Développeur web stagiaire en 2021 pendant 2 mois</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 mb-4">
+                                        <div class="page-card p-4 h-100">
+                                            <h3 class="h5 font-weight-bold mb-3">Compétences</h3>
+                                            <ul class="mb-0 pl-3">
+                                                <li>PHP, Symfony, WordPress</li>
+                                                <li>JavaScript, Vue.js</li>
+                                                <li>HTML, CSS, Bootstrap</li>
+                                                <li>SQL, MySQL, C# .NET</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="page-card p-4">
+                                            <h3 class="h5 font-weight-bold mb-3">Formation</h3>
+                                            <ul class="mb-0 pl-3">
+                                                <li>2023-2025 : Développeur Web et Web Mobile</li>
+                                                <li>2023 : Autoformation JavaScript et PHP orienté objet</li>
+                                                <li>2020-2023 : Validation d'un premier CCP frontend</li>
+                                                <li>2020 : Bac STMG mention bien</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-12 col-lg-5 text-center">
                     <div class="home-photo-shell mx-auto">
-                        <div class="home-photo-placeholder"></div>
+                        <img
+                            class="home-photo"
+                            src="{{ asset('images/matthieu.jpg') }}"
+                            alt="Photo de Matthieu Thuet"
+                            loading="lazy"
+                            decoding="async"
+                        >
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="home-panel home-panel-hero d-flex align-items-center">
-        <div class="container">
+    <div class="home-block home-block-services" id="bloc-services">
+        <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-12 col-lg-7 mb-5 mb-lg-0">
                     <h1 class="display-3 font-weight-bold mb-5">Mes services</h1>
@@ -45,91 +107,117 @@
                         </p>
                     </div>
 
-                    <div class="mb-4">
+                    <div>
                         <h2 class="h2 font-weight-bold">Consulting en accessibilité</h2>
                         <p class="lead mb-0">
                             Une analyse concrète de ton site ou de ton application pour améliorer l'expérience réelle des utilisateurs.
                         </p>
                     </div>
+                    <div class="home-info-row mt-4">
+                        <button class="home-plus-link" type="button" data-home-toggle="services" aria-expanded="false">
+                            Plus d'info
+                        </button>
 
-                    <a class="home-plus-link mt-3 d-inline-flex align-items-center" href="{{ path('app_services') }}">
-                        <span>Plus d'info</span>
-                        <span class="home-plus-arrow" aria-hidden="true"></span>
-                    </a>
+                        <div class="home-expandable-panel home-expandable-panel-inline" data-home-panel="services" hidden>
+                            <div class="home-expandable-inner">
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 mb-4">
+                                        <div class="page-card p-4 h-100">
+                                            <h3 class="h5 font-weight-bold mb-3">Création de sites web sur mesure</h3>
+                                            <ul class="mb-0 pl-3">
+                                                <li>Prise de contact et définition du besoin</li>
+                                                <li>Devis détaillé et planning clair</li>
+                                                <li>Développement avec retours réguliers</li>
+                                                <li>Livraison et accompagnement si besoin</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-6 mb-4">
+                                        <div class="page-card p-4 h-100">
+                                            <h3 class="h5 font-weight-bold mb-3">Consulting en accessibilité</h3>
+                                            <ul class="mb-0 pl-3">
+                                                <li>Analyse du site ou de l'application</li>
+                                                <li>Identification des points bloquants</li>
+                                                <li>Rapport clair avec priorités</li>
+                                                <li>Accompagnement possible à la correction</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-12 col-lg-5 text-center">
                     <div class="home-photo-shell mx-auto">
-                        <div class="home-photo-placeholder"></div>
+                        <img
+                            class="home-photo"
+                            src="{{ asset('images/matthieu.jpg') }}"
+                            alt="Photo de Matthieu Thuet"
+                            loading="lazy"
+                            decoding="async"
+                        >
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="home-panel home-panel-clients d-flex align-items-center">
-        <div class="container">
+    <div class="home-block home-block-clients" id="bloc-clients">
+        <div class="container py-5">
             <h2 class="display-3 font-weight-bold text-center mb-5">Ils m'ont fait confiance</h2>
 
+            <p class="lead text-center mb-5">
+                Déjà 2 clients m'ont fait confiance. J'aurai un immense plaisir à vous accompagner dans votre projet de création de site web ou dans l'amélioration de l'accessibilité de votre site web ou de votre application mobile.
+            </p>
+
             <div class="row">
-                <div class="col-12 col-lg-6 mb-5 mb-lg-0">
-                    <div class="client-logo-wrap client-logo-wrap-home mb-4">
-                        <img
-                            class="client-logo"
-                            src="{{ asset('images/clients/le-phare.png') }}"
-                            alt="Logo de IDS le Phare"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="page-card h-100 p-4">
+                        <div class="client-logo-wrap client-logo-wrap-home mb-4">
+                            <img
+                                class="client-logo"
+                                src="{{ asset('images/clients/le-phare.png') }}"
+                                alt="Logo de IDS le Phare"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <h3 class="h3 font-weight-bold mb-3 text-center">IDS le Phare</h3>
+                        <p class="mb-3 text-center">Ils m'ont demandé de consulter l'accessibilité de leur nouveau site pour une ludothèque, avec des fonctionnalités d'emprunt de jeux de société et de livres en ligne.</p>
+                        <p class="font-weight-bold text-center mb-0">Consulting en accessibilité web</p>
                     </div>
-                    <h3 class="h2 font-weight-bold">IDS le Phare</h3>
-                    <p class="mb-3">
-                        Ils m'ont demandé de consulter l'accessibilité de leur nouveau site pour une ludothèque, avec des fonctionnalités d'emprunt de jeux de société et de livres en ligne.
-                    </p>
-                    <p class="font-weight-bold mb-0">Consulting en accessibilité web</p>
-                        <a class="home-plus-link mt-4 d-inline-flex align-items-center" href="javascript:void(0)">
-                            <span>Plus d'info</span>
-                            <span class="home-plus-arrow" aria-hidden="true"></span>
-                        </a>
                 </div>
 
-                <div class="col-12 col-lg-6">
-                    <div class="client-logo-wrap client-logo-wrap-home mb-4">
-                        <img
-                            class="client-logo"
-                            src="{{ asset('images/clients/christophe-kippelen.png') }}"
-                            alt="Logo de Christophe Kippelen"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="page-card h-100 p-4">
+                        <div class="client-logo-wrap client-logo-wrap-home mb-4">
+                            <img
+                                class="client-logo"
+                                src="{{ asset('images/clients/christophe-kippelen.png') }}"
+                                alt="Logo de Christophe Kippelen"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <h3 class="h3 font-weight-bold mb-3 text-center">Christophe Kippelen</h3>
+                        <p class="mb-3 text-center">Création d'un site WordPress avec une page d'accueil et une page de contact.</p>
+                        <p class="font-weight-bold text-center mb-0">Site WordPress</p>
                     </div>
-                    <h3 class="h2 font-weight-bold">Christophe Kippelen</h3>
-                    <p class="mb-3">
-                        Création d'un site WordPress avec une page d'accueil et une page de contact.
-                    </p>
-                    <p class="font-weight-bold mb-0">Site WordPress</p>
-                        <a class="home-plus-link mt-4 d-inline-flex align-items-center" href="javascript:void(0)">
-                            <span>Plus d'info</span>
-                            <span class="home-plus-arrow" aria-hidden="true"></span>
-                        </a>
                 </div>
             </div>
 
-            <div class="text-center mt-5">
-                <a class="home-plus-link d-inline-flex align-items-center" href="{{ path('app_clients') }}">
-                    <span>Plus d'info</span>
-                    <span class="home-plus-arrow" aria-hidden="true"></span>
-                </a>
-            </div>
         </div>
-    </section>
+    </div>
 
-    <section class="home-panel home-panel-contact d-flex align-items-center" id="contact">
-        <div class="container">
+    <div class="home-block home-block-contact" id="bloc-contact">
+        <div class="container py-5">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-9 home-contact-block">
-                    <p class="text-uppercase font-weight-bold mb-3 home-kicker text-center">Parlons de votre projet</p>
+                <div class="col-12 home-contact-block">
                     <h2 class="display-4 font-weight-bold text-center mb-4">Me contacter</h2>
+                    <p class="text-uppercase font-weight-bold mb-3 home-kicker text-center">Parlons de votre projet</p>
                     <p class="lead text-center mb-5">
                         Si vous avez une idée, un besoin de refonte, un site à rendre plus accessible ou simplement une question, vous pouvez m'envoyer un message directement ici.
                     </p>
@@ -154,6 +242,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </main>
 {% endblock %}

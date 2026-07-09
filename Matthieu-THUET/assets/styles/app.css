@@ -2,26 +2,108 @@ body {
     margin: 0;
     background: #08111f;
     color: #ffffff;
+    scrollbar-width: thin;
+    scrollbar-color: #c40000 transparent;
+    scroll-behavior: smooth;
 }
 
-.home-panel {
+body::-webkit-scrollbar,
+.home-contact-block::-webkit-scrollbar {
+    width: 0.45rem;
+}
+
+body::-webkit-scrollbar-track,
+.home-contact-block::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb,
+.home-contact-block::-webkit-scrollbar-thumb {
+    background: #c40000;
+}
+
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: rgba(196, 0, 0, 0.18);
+    border: 1px solid rgba(196, 0, 0, 0.35);
+    pointer-events: none;
+    transform: translate(-999px, -999px);
+    transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    margin-left: -1.375rem;
+    margin-top: -1.375rem;
+}
+
+.cursor-ring-small {
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-left: -0.8rem;
+    margin-top: -0.8rem;
+    background: rgba(196, 0, 0, 0.28);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.home-page {
+    width: 100%;
+    padding-top: 5rem;
+}
+
+.home-block {
     min-height: 100vh;
-    padding: 4rem 0;
+    min-height: 100svh;
+    scroll-margin-top: 5rem;
 }
 
-.home-panel-hero {
+.home-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(8, 17, 31, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+}
+
+.home-nav-brand,
+.home-nav-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.home-nav-brand {
+    font-weight: 700;
+}
+
+.home-nav-link {
+    margin: 0 0.75rem;
+    transition: color 0.25s ease;
+}
+
+.home-nav-link:hover,
+.home-nav-brand:hover {
+    color: #d4e6ff;
+    text-decoration: none;
+}
+
+.home-block-services {
     background: #08203a;
 }
 
-.home-panel-about {
+.home-block-about {
     background: #12365f;
 }
 
-.home-panel-clients {
+.home-block-clients {
     background: #18535b;
 }
 
-.home-panel-contact {
+.home-block-contact {
     background: #000000;
 }
 
@@ -51,25 +133,49 @@ body {
     font-weight: 600;
     line-height: 1.2;
     text-decoration: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .home-plus-link:hover,
 .home-plus-link:focus {
     color: #ffffff;
     text-decoration: none;
-}
-
-.home-plus-arrow {
-    width: 0.9rem;
-    height: 0.9rem;
-    margin-left: 0.45rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(45deg) translateY(-1px);
+    transform: translateY(-1px);
 }
 
 .home-kicker {
     letter-spacing: 0.16em;
+}
+
+.home-expandable-panel {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(18px);
+    transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease, transform 0.45s ease;
+}
+
+.home-info-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.home-expandable-panel-inline {
+    width: 100%;
+}
+
+.home-expandable-panel-open {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-expandable-inner {
+    padding-top: 0.75rem;
 }
 
 .home-photo-shell {
@@ -84,6 +190,13 @@ body {
     height: 100%;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
+}
+
+.home-photo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
 }
 
 .client-logo-wrap {
@@ -118,8 +231,8 @@ body {
 }
 
 @media (max-width: 991.98px) {
-    .home-panel {
-        padding: 3rem 0;
+    .cursor-ring {
+        display: none;
     }
 
     .home-photo-shell {
@@ -129,5 +242,18 @@ body {
 
     .home-contact-block {
         padding: 2rem 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .home-info-row {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+        column-gap: 1.5rem;
+    }
+
+    .home-expandable-panel-inline {
+        margin-top: -0.35rem;
     }
 }
