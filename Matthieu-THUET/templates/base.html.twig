@@ -21,7 +21,8 @@
         {% endif %}
     </head>
     <body>
-        {% include '_partials/menu.html.twig' %}
+        <div class="cursor-ring" data-cursor-ring aria-hidden="true"></div>
+        {% block navigation %}{% endblock %}
         {% block body %}{% endblock %}
 
         {% block bootstrap_javascripts %}

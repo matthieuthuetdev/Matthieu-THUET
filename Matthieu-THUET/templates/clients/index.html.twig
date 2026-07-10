@@ -3,61 +3,66 @@
 {% block title %}Mes clients{% endblock %}
 
 {% block body %}
-<div class="container py-5">
-    <h1 class="h2 mb-3">Mes clients</h1>
+<main class="page-panel page-panel-clients py-5">
+    <div class="container py-4">
+        <h1 class="display-4 font-weight-bold mb-4">Mes clients</h1>
 
-    <p class="lead mb-5">
-        Déjà <strong>2</strong> clients m'ont fait confiance !<br>
-        Faites une demande de mes services sur le site ou à l'adresse mail en bas de page afin de faire partie de mes clients.<br>
-        J’aurai un immense plaisir à vous accompagner dans votre projet de création de site web ou dans l’amélioration de l’accessibilité de votre site web ou de votre application mobile !
-    </p>
-
-    <section class="my-5">
-        <h2 class="h3 mb-4">Ils m'ont fait confiance</h2>
+        <p class="lead mb-5">
+            Déjà <strong>2</strong> clients m'ont fait confiance.<br>
+            J'aurai un immense plaisir à vous accompagner dans votre projet de création de site web ou dans l'amélioration de l'accessibilité de votre site web ou de votre application mobile.
+        </p>
 
         <div class="row">
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body d-flex flex-column">
-                        <div class="client-logo-wrap mb-3">
-                            <img
-                                class="client-logo"
-                                src="{{ asset('images/clients/le-phare.png') }}"
-                                alt="Logo de IDS le Phare"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                        </div>
-                        <h3 class="h5 card-title mb-2">IDS le Phare</h3>
-                        <p class="card-text flex-grow-1">
-                            Ils m'ont demandé de consulter l'accessibilité de leur nouveau site pour une ludothèque, avec des fonctionnalités d'emprunt de jeux de société et de livres en ligne.
-                        </p>
-                        <strong class="d-block mb-0">Consulting en accessibilité web</strong>
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="page-card h-100 p-4">
+                    <div class="client-logo-wrap client-logo-wrap-home mb-4">
+                        <img
+                            class="client-logo"
+                            src="{{ asset('images/clients/le-phare.png') }}"
+                            alt="Logo de IDS le Phare"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+                    <h2 class="h2 font-weight-bold mb-3 text-center">IDS le Phare</h2>
+                    <p class="mb-3 text-center">
+                        Ils m'ont demandé de consulter l'accessibilité de leur nouveau site pour une ludothèque, avec des fonctionnalités d'emprunt de jeux de société et de livres en ligne.
+                    </p>
+                    <p class="font-weight-bold text-center mb-4">Consulting en accessibilité web</p>
+                    <div class="text-center mt-auto">
+                        <a class="home-plus-link d-inline-flex align-items-center" href="javascript:void(0)">
+                            <span>Plus d'info</span>
+                            <span class="home-plus-arrow" aria-hidden="true"></span>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body d-flex flex-column">
-                        <div class="client-logo-wrap mb-3">
-                            <img
-                                class="client-logo"
-                                src="{{ asset('images/clients/christophe-kippelen.png') }}"
-                                alt="Logo de Christophe Kippelen"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                        </div>
-                        <h3 class="h5 card-title mb-2">Christophe Kippelen</h3>
-                        <p class="card-text flex-grow-1">
-                            Création d’un site WordPress avec une page d’accueil et une page de contact.
-                        </p>
-                        <strong class="d-block mb-0">Site WordPress</strong>
+            <div class="col-12 col-lg-6 mb-4">
+                <div class="page-card h-100 p-4">
+                    <div class="client-logo-wrap client-logo-wrap-home mb-4">
+                        <img
+                            class="client-logo"
+                            src="{{ asset('images/clients/christophe-kippelen.png') }}"
+                            alt="Logo de Christophe Kippelen"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+                    <h2 class="h2 font-weight-bold mb-3 text-center">Christophe Kippelen</h2>
+                    <p class="mb-3 text-center">
+                        Création d'un site WordPress avec une page d'accueil et une page de contact.
+                    </p>
+                    <p class="font-weight-bold text-center mb-4">Site WordPress</p>
+                    <div class="text-center mt-auto">
+                        <a class="home-plus-link d-inline-flex align-items-center" href="javascript:void(0)">
+                            <span>Plus d'info</span>
+                            <span class="home-plus-arrow" aria-hidden="true"></span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</main>
 {% endblock %}

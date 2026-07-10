@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Contact;
 use App\Form\ContactType;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,17 +14,25 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ContactFormController extends AbstractController
 {
     #[Route('/contact/form', name: 'app_contact_form')]
-    public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function index(Request $request, MailerInterface $mailer): Response
     {
-        $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
+        $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($contact);
-            $entityManager->flush();
+            $formData = $form->getData();
+            $contact = [
+                'firstName' => $formData['firstName'] ?? '',
+                'name' => $formData['name'] ?? '',
+                'companyName' => $formData['companyName'] ?? null,
+                'emailAddress' => $formData['emailAddress'] ?? '',
+                'subject' => $formData['subject'] ?? '',
+                'content' => $formData['Content'] ?? '',
+                'rgpd' => (bool) ($formData['RGPD'] ?? false),
+            ];
 
             $ownerEmail = new Address('mthuet.pro@gmail.com', 'Matthieu THUET');
-            $senderEmail = new Address($contact->getEmailAddress(), trim($contact->getfirstName() . ' ' . $contact->getName()));
+            $senderEmail = new Address($contact['emailAddress'], trim($contact['firstName'] . ' ' . $contact['name']));
 
             $mailer->send(
                 (new TemplatedEmail())
@@ -43,7 +49,7 @@ final class ContactFormController extends AbstractController
             $mailer->send(
                 (new TemplatedEmail())
                     ->from($ownerEmail)
-                    ->to(new Address($contact->getEmailAddress()))
+                    ->to(new Address($contact['emailAddress']))
                     ->subject('Votre message a bien été transmis')
                     ->htmlTemplate('emails/contact/user.html.twig')
                     ->context([
@@ -52,6 +58,7 @@ final class ContactFormController extends AbstractController
             );
 
             $this->addFlash('success', 'Votre message a bien été envoyé.');
+
             return $this->redirectToRoute('app_contact_form');
         }
 
