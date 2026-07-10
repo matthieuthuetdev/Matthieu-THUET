@@ -23,29 +23,7 @@ body::-webkit-scrollbar-thumb,
 }
 
 .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%;
-    background: rgba(196, 0, 0, 0.18);
-    border: 1px solid rgba(196, 0, 0, 0.35);
-    pointer-events: none;
-    transform: translate(-999px, -999px);
-    transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
-    margin-left: -1.375rem;
-    margin-top: -1.375rem;
-}
-
-.cursor-ring-small {
-    width: 1.6rem;
-    height: 1.6rem;
-    margin-left: -0.8rem;
-    margin-top: -0.8rem;
-    background: rgba(196, 0, 0, 0.28);
-    border-color: rgba(255, 255, 255, 0.45);
+    display: none;
 }
 
 .home-page {
@@ -74,6 +52,8 @@ body::-webkit-scrollbar-thumb,
 .home-nav-link {
     color: #ffffff;
     text-decoration: none;
+    cursor: pointer;
+    transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .home-nav-brand {
@@ -82,13 +62,15 @@ body::-webkit-scrollbar-thumb,
 
 .home-nav-link {
     margin: 0 0.75rem;
-    transition: color 0.25s ease;
 }
 
 .home-nav-link:hover,
-.home-nav-brand:hover {
+.home-nav-brand:hover,
+.home-nav-link:focus,
+.home-nav-brand:focus {
     color: #d4e6ff;
     text-decoration: none;
+    transform: scale(1.06);
 }
 
 .home-block-services {
@@ -128,6 +110,9 @@ body::-webkit-scrollbar-thumb,
 }
 
 .home-plus-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
     color: #d4e6ff;
     font-size: 1rem;
     font-weight: 600;
@@ -143,7 +128,21 @@ body::-webkit-scrollbar-thumb,
 .home-plus-link:focus {
     color: #ffffff;
     text-decoration: none;
-    transform: translateY(-1px);
+    transform: scale(1.06);
+}
+
+.home-plus-link::after {
+    content: '';
+    width: 0.65rem;
+    height: 0.65rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg) translateY(-0.08rem);
+    transition: transform 0.25s ease;
+}
+
+.home-plus-link[aria-expanded='true']::after {
+    transform: rotate(-135deg) translateY(-0.02rem);
 }
 
 .home-kicker {
@@ -228,6 +227,28 @@ body::-webkit-scrollbar-thumb,
 
 .home-contact-block {
     padding: 3rem;
+}
+
+.btn,
+button,
+input[type='submit'],
+input[type='button'],
+input[type='reset'] {
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.btn:hover,
+.btn:focus,
+button:hover,
+button:focus,
+input[type='submit']:hover,
+input[type='submit']:focus,
+input[type='button']:hover,
+input[type='button']:focus,
+input[type='reset']:hover,
+input[type='reset']:focus {
+    transform: scale(1.06);
 }
 
 @media (max-width: 991.98px) {

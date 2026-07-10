@@ -50,14 +50,14 @@ final class HomePageController extends AbstractController
                 (new TemplatedEmail())
                     ->from($ownerEmail)
                     ->to(new Address($contact['emailAddress']))
-                    ->subject('Votre message a bien ete transmis')
+                    ->subject('Votre message a bien été transmis')
                     ->htmlTemplate('emails/contact/user.html.twig')
                     ->context([
                         'contact' => $contact,
                     ])
             );
 
-            $this->addFlash('success', 'Votre message a bien ete envoye.');
+            $this->addFlash('success', 'Votre message a bien été envoyé.');
 
             return $this->redirect($this->generateUrl('app_home_page') . '#contact');
         }

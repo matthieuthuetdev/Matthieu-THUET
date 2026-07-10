@@ -36,8 +36,7 @@ class ContactType extends AbstractType
             ])
             ->add('RGPD', CheckboxType::class, [
                 'label' => "J'accepte la politique de confidentialité (RGPD)",
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

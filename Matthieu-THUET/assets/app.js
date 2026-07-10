@@ -2,20 +2,7 @@ import './stimulus_bootstrap.js';
 import './styles/app.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const cursorRing = document.querySelector('[data-cursor-ring]');
-    const clickableSelector = 'a, button, input, textarea, select, label, [role="button"]';
     const navLinks = Array.from(document.querySelectorAll('[data-home-nav-link]'));
-
-    if (cursorRing) {
-        window.addEventListener('mousemove', (event) => {
-            cursorRing.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
-        });
-
-        document.addEventListener('mouseover', (event) => {
-            const clickableTarget = event.target.closest(clickableSelector);
-            cursorRing.classList.toggle('cursor-ring-small', Boolean(clickableTarget));
-        });
-    }
 
     if (navLinks.length > 0) {
         navLinks.forEach((link) => {
