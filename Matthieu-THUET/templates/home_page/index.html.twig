@@ -3,15 +3,28 @@
 {% block title %}Accueil{% endblock %}
 
 {% block navigation %}
-<nav class="home-nav">
+<nav class="home-nav navbar navbar-expand-lg">
     <div class="container">
-        <div class="d-flex flex-wrap justify-content-center justify-content-lg-between align-items-center py-3">
-            <a class="home-nav-brand" href="#bloc-about" data-home-nav-link>Matthieu THUET</a>
-            <div class="d-flex flex-wrap justify-content-center">
-                <a class="home-nav-link" href="#bloc-about" data-home-nav-link>Je me présente</a>
-                <a class="home-nav-link" href="#bloc-services" data-home-nav-link>Mes services</a>
-                <a class="home-nav-link" href="#bloc-clients" data-home-nav-link>Mes clients</a>
-                <a class="home-nav-link" href="#bloc-contact" data-home-nav-link>Contact</a>
+        <a class="home-nav-brand navbar-brand" href="#bloc-about" data-home-nav-link>Matthieu THUET</a>
+
+        <button
+            class="navbar-toggler home-nav-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#homeNavMenu"
+            aria-controls="homeNavMenu"
+            aria-expanded="false"
+            aria-label="Ouvrir le menu"
+        >
+            <span class="navbar-toggler-icon home-nav-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-lg-end home-nav-menu" id="homeNavMenu">
+            <div class="navbar-nav align-items-lg-center">
+                <a class="home-nav-link nav-link" href="#bloc-about" data-home-nav-link>Je me présente</a>
+                <a class="home-nav-link nav-link" href="#bloc-services" data-home-nav-link>Mes services</a>
+                <a class="home-nav-link nav-link" href="#bloc-clients" data-home-nav-link>Mes clients</a>
+                <a class="home-nav-link nav-link" href="#bloc-contact" data-home-nav-link>Contact</a>
             </div>
         </div>
     </div>
@@ -23,7 +36,19 @@
     <div class="home-block home-block-about" id="bloc-about">
         <div class="container py-5">
             <div class="row align-items-center">
-                <div class="col-12 col-lg-7 mb-5 mb-lg-0">
+                <div class="col-12 col-lg-5 text-center order-1 order-lg-2 mb-5 mb-lg-0">
+                    <div class="home-photo-shell mx-auto">
+                        <img
+                            class="home-photo"
+                            src="{{ asset('images/matthieu.jpg') }}"
+                            alt="Photo de Matthieu Thuet"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7 order-2 order-lg-1">
                     <h2 class="display-4 font-weight-bold mb-4">Je me présente</h2>
                     <p class="lead mb-4">
                         Je m'appelle Matthieu, j'ai 24 ans et je suis passionné par le développement web depuis plusieurs années. Depuis le 15 avril 2026, j'ai créé ma micro-entreprise afin de proposer mes services aux particuliers comme aux entreprises.
@@ -78,8 +103,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <div class="col-12 col-lg-5 text-center">
+    <div class="home-block home-block-services" id="bloc-services">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-5 text-center order-1 order-lg-2 mb-5 mb-lg-0">
                     <div class="home-photo-shell mx-auto">
                         <img
                             class="home-photo"
@@ -90,14 +121,8 @@
                         >
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="home-block home-block-services" id="bloc-services">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg-7 mb-5 mb-lg-0">
+                <div class="col-12 col-lg-7 order-2 order-lg-1">
                     <h1 class="display-3 font-weight-bold mb-5">Mes services</h1>
 
                     <div class="mb-5">
@@ -147,18 +172,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-5 text-center">
-                    <div class="home-photo-shell mx-auto">
-                        <img
-                            class="home-photo"
-                            src="{{ asset('images/matthieu.jpg') }}"
-                            alt="Photo de Matthieu Thuet"
-                            loading="lazy"
-                            decoding="async"
-                        >
                     </div>
                 </div>
             </div>

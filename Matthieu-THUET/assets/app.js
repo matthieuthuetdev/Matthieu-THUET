@@ -3,6 +3,7 @@ import './styles/app.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = Array.from(document.querySelectorAll('[data-home-nav-link]'));
+    const navMenu = document.querySelector('#homeNavMenu');
 
     if (navLinks.length > 0) {
         navLinks.forEach((link) => {
@@ -29,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: targetTop,
                     behavior: 'smooth',
                 });
+
+                if (navMenu && navMenu.classList.contains('show')) {
+                    window.jQuery(navMenu).collapse('hide');
+                }
             });
         });
     }
