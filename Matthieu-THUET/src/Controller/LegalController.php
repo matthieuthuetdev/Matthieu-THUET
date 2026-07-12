@@ -46,12 +46,14 @@ final class LegalController extends AbstractController
             'summary' => $document['summary'],
             'updatedAt' => $document['updatedAt'],
             'readingTime' => $document['readingTime'],
+            'documentTypeLabel' => $document['documentTypeLabel'],
+            'documentTypeValue' => $document['documentTypeValue'],
             'sections' => $this->extractSections($document['body'], $key === 'terms'),
         ];
     }
 
     /**
-     * @return array<string, array{title: string, summary: string, updatedAt: string, readingTime: string, body: string}>
+     * @return array<string, array{title: string, summary: string, updatedAt: string, readingTime: string, documentTypeLabel: string, documentTypeValue: string, body: string}>
      */
     private function getDocuments(): array
     {
@@ -61,6 +63,8 @@ final class LegalController extends AbstractController
                 'summary' => 'Les informations d’identification de l’éditeur du site, de l’hébergeur et les règles générales d’utilisation du site.',
                 'updatedAt' => '11 juillet 2026',
                 'readingTime' => '5 min',
+                'documentTypeLabel' => 'Document contractuel',
+                'documentTypeValue' => 'Ce document a une valeur contractuelle.',
                 'body' => <<<'TEXT'
 1. Éditeur du site
 
@@ -246,6 +250,8 @@ TEXT,
                 'summary' => 'La manière dont les données personnelles sont collectées, utilisées, conservées et protégées sur le site.',
                 'updatedAt' => '11 juillet 2026',
                 'readingTime' => '6 min',
+                'documentTypeLabel' => 'Document informatif',
+                'documentTypeValue' => 'Aucune valeur contractuelle',
                 'body' => <<<'TEXT'
 1. Préambule
 
@@ -430,6 +436,8 @@ TEXT,
                 'summary' => 'Les règles contractuelles applicables aux prestations proposées, notamment les responsabilités, garanties et modalités de règlement des litiges.',
                 'updatedAt' => '11 juillet 2026',
                 'readingTime' => '8 min',
+                'documentTypeLabel' => 'Document contractuel',
+                'documentTypeValue' => 'Ce document a une valeur contractuelle.',
                 'body' => <<<'TEXT'
 Préambule
 
