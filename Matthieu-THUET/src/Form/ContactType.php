@@ -16,26 +16,27 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class, [
-                'label' => 'Prénom',
+                'label' => 'Prénom *',
             ])
             ->add('name', TextType::class, [
-                'label' => 'Nom',
+                'label' => 'Nom *',
             ])
             ->add('companyName', TextType::class, [
                 'label' => 'Entreprise',
                 'required' => false,
             ])
             ->add('emailAddress', EmailType::class, [
-                'label' => 'E-mail',
+                'label' => 'E-mail *',
             ])
             ->add('subject', TextType::class, [
-                'label' => 'Sujet',
+                'label' => 'Sujet *',
             ])
             ->add('Content', TextareaType::class, [
-                'label' => 'Message',
+                'label' => 'Message *',
             ])
             ->add('RGPD', CheckboxType::class, [
-                'label' => "J'accepte la politique de confidentialité (RGPD)",
+                'label' => 'En cochant cette case j\'accepte la <a href="/politique-de-confidentialite">politique de confidentialité</a> *',
+                'label_html' => true,
             ]);
     }
 

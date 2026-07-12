@@ -48,6 +48,10 @@ body::-webkit-scrollbar-thumb,
     backdrop-filter: blur(8px);
 }
 
+.home-nav .container {
+    min-height: 5rem;
+}
+
 .home-nav-brand,
 .home-nav-link {
     color: #ffffff;
@@ -62,6 +66,26 @@ body::-webkit-scrollbar-thumb,
 
 .home-nav-link {
     margin: 0 0.75rem;
+}
+
+.home-nav-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 0.45rem 0.55rem;
+    border-radius: 0;
+}
+
+.home-nav-toggler-icon {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.home-nav-menu {
+    flex-grow: 0;
 }
 
 .home-nav-link:hover,
@@ -225,6 +249,11 @@ body::-webkit-scrollbar-thumb,
     display: inline;
 }
 
+.home-form-note {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
 .home-contact-block {
     padding: 3rem;
 }
@@ -268,6 +297,10 @@ body::-webkit-scrollbar-thumb,
     color: #ffffff;
     text-decoration: underline;
     text-underline-offset: 0.18rem;
+}
+
+.site-footer-text {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .site-footer-photo {
@@ -469,9 +502,45 @@ input[type='reset']:focus {
         display: none;
     }
 
+    .home-page {
+        padding-top: 5.5rem;
+    }
+
+    .home-nav .container {
+        min-height: auto;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .home-nav-menu {
+        width: 100%;
+        padding-top: 1rem;
+    }
+
+    .home-nav-menu .navbar-nav {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .home-nav-link {
+        margin: 0;
+        padding: 0.65rem 0;
+    }
+
     .home-photo-shell {
         width: min(22rem, 82vw);
         margin-bottom: 2rem;
+    }
+
+    .home-block .display-3,
+    .home-block .display-4 {
+        font-size: clamp(2.2rem, 9vw, 3.2rem);
+    }
+
+    .home-expandable-inner .col-md-6,
+    .home-expandable-inner .col-lg-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 
     .home-contact-block {
