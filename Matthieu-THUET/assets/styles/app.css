@@ -225,6 +225,11 @@ body::-webkit-scrollbar-thumb,
     display: inline;
 }
 
+.home-form-note {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
 .home-contact-block {
     padding: 3rem;
 }
