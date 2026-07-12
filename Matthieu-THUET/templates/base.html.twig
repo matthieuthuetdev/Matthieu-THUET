@@ -24,6 +24,9 @@
         <div class="cursor-ring" data-cursor-ring aria-hidden="true"></div>
         {% block navigation %}{% endblock %}
         {% block body %}{% endblock %}
+        {% block footer %}
+            {% include '_partials/footer.html.twig' %}
+        {% endblock %}
 
         {% block bootstrap_javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

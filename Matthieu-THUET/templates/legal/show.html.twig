@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ document.title }}{% endblock %}
+
+{% block body %}
+<main class="legal-page">
+    <div class="legal-shell">
+        <a class="legal-back-link" href="{{ path('app_home_page') }}">Retour à l'accueil</a>
+
+        <header class="legal-intro-card">
+            <div class="legal-intro-main">
+                <h1 class="legal-title">{{ document.title }}</h1>
+                <p class="legal-summary">{{ document.summary }}</p>
+            </div>
+
+            <dl class="legal-meta" aria-label="Informations sur le document">
+                <div class="legal-meta-item">
+                    <dt>Dernière mise à jour</dt>
+                    <dd>{{ document.updatedAt }}</dd>
+                </div>
+                <div class="legal-meta-item">
+                    <dt>Temps de lecture estimé</dt>
+                    <dd>{{ document.readingTime }}</dd>
+                </div>
+                <div class="legal-meta-item">
+                    <dt>Document informatif</dt>
+                    <dd>Aucune valeur contractuelle</dd>
+                </div>
+            </dl>
+        </header>
+
+        <div class="legal-articles">
+            {% for section in document.sections %}
+                <section class="legal-article" aria-labelledby="legal-section-{{ loop.index }}">
+                    <h2 class="legal-article-title" id="legal-section-{{ loop.index }}">{{ section.title }}</h2>
+                    <div class="legal-article-content">{{ section.contentHtml|raw }}</div>
+                </section>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}
