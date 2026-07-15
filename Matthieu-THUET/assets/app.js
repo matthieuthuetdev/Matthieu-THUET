@@ -57,7 +57,10 @@ function initializeHomePageInteractions() {
 
         button.dataset.homeToggleBound = 'true';
 
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
             const panelName = button.dataset.homeToggle;
             const panel = document.querySelector(`[data-home-panel="${panelName}"]`);
 

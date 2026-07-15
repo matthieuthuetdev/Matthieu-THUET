@@ -342,7 +342,6 @@ body::-webkit-scrollbar-thumb,
 
 .legal-page a:focus-visible,
 .site-footer-link:focus-visible,
-.home-plus-link:focus-visible,
 .home-nav-link:focus-visible,
 .home-nav-brand:focus-visible,
 .btn:focus-visible,
@@ -352,6 +351,12 @@ textarea:focus-visible,
 select:focus-visible {
     outline: 3px solid #c40000;
     outline-offset: 3px;
+}
+
+.home-plus-link:focus,
+.home-plus-link:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 .legal-back-link {
