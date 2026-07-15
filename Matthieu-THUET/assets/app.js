@@ -1,12 +1,18 @@
 import './stimulus_bootstrap.js';
 import './styles/app.css';
 
-document.addEventListener('DOMContentLoaded', () => {
+function initializeHomePageInteractions() {
     const navLinks = Array.from(document.querySelectorAll('[data-home-nav-link]'));
     const navMenu = document.querySelector('#homeNavMenu');
 
     if (navLinks.length > 0) {
         navLinks.forEach((link) => {
+            if (link.dataset.homeNavBound === 'true') {
+                return;
+            }
+
+            link.dataset.homeNavBound = 'true';
+
             link.addEventListener('click', (event) => {
                 const targetId = link.getAttribute('href');
 
@@ -45,6 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     toggleButtons.forEach((button) => {
+        if (button.dataset.homeToggleBound === 'true') {
+            return;
+        }
+
+        button.dataset.homeToggleBound = 'true';
+
         button.addEventListener('click', () => {
             const panelName = button.dataset.homeToggle;
             const panel = document.querySelector(`[data-home-panel="${panelName}"]`);
@@ -86,4 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         });
     });
-});
+}
+
+document.addEventListener('DOMContentLoaded', initializeHomePageInteractions);
+document.addEventListener('turbo:load', initializeHomePageInteractions);

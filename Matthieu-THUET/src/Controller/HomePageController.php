@@ -59,7 +59,7 @@ final class HomePageController extends AbstractController
 
             $this->addFlash('success', 'Votre message a bien été envoyé.');
 
-            return $this->redirect($this->generateUrl('app_home_page') . '#contact');
+            return $this->redirect($this->generateUrl('app_home_page') . '#bloc-contact');
         }
 
         return $this->render('home_page/index.html.twig', [
