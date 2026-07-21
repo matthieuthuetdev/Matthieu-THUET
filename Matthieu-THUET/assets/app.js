@@ -1,6 +1,31 @@
 import './stimulus_bootstrap.js';
 import './styles/app.css';
 
+function scrollToHashTarget() {
+    const { hash } = window.location;
+
+    if (!hash || !hash.startsWith('#')) {
+        return;
+    }
+
+    const target = document.querySelector(hash);
+    const nav = document.querySelector('.home-nav');
+
+    if (!target || !nav) {
+        return;
+    }
+
+    window.requestAnimationFrame(() => {
+        const navHeight = nav.offsetHeight;
+        const targetTop = window.scrollY + target.getBoundingClientRect().top - navHeight;
+
+        window.scrollTo({
+            top: targetTop,
+            behavior: 'auto',
+        });
+    });
+}
+
 function initializeHomePageInteractions() {
     const navLinks = Array.from(document.querySelectorAll('[data-home-nav-link]'));
     const navMenu = document.querySelector('#homeNavMenu');
@@ -105,3 +130,5 @@ function initializeHomePageInteractions() {
 
 document.addEventListener('DOMContentLoaded', initializeHomePageInteractions);
 document.addEventListener('turbo:load', initializeHomePageInteractions);
+document.addEventListener('DOMContentLoaded', scrollToHashTarget);
+document.addEventListener('turbo:load', scrollToHashTarget);

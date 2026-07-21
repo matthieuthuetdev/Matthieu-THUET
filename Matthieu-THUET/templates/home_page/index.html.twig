@@ -241,7 +241,7 @@
 
                     <p class="home-form-note">Les champs obligatoires sont symbolisés par une *</p>
 
-                    {{ form_start(contactForm) }}
+                    {{ form_start(contactForm, { attr: { 'data-turbo': 'false' } }) }}
                         <div class="form-row">
                             <div class="form-group col-md-6">{{ form_row(contactForm.firstName) }}</div>
                             <div class="form-group col-md-6">{{ form_row(contactForm.lastName) }}</div>
