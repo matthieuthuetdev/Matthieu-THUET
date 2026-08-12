@@ -18,6 +18,7 @@ final class HomePageController extends AbstractController
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
+        $scrollToContact = false;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
@@ -59,11 +60,13 @@ final class HomePageController extends AbstractController
 
             $this->addFlash('success', 'Votre message a bien été envoyé.');
 
-            return $this->redirect($this->generateUrl('app_home_page') . '#bloc-contact');
+            $form = $this->createForm(ContactType::class);
+            $scrollToContact = true;
         }
 
         return $this->render('home_page/index.html.twig', [
             'contactForm' => $form->createView(),
+            'scrollToContact' => $scrollToContact,
         ]);
     }
 }

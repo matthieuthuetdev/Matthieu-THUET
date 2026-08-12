@@ -23,6 +23,7 @@
             <div class="navbar-nav align-items-lg-center">
                 <a class="home-nav-link nav-link" href="#bloc-about" data-home-nav-link>Je me présente</a>
                 <a class="home-nav-link nav-link" href="#bloc-services" data-home-nav-link>Mes services</a>
+                <a class="home-nav-link nav-link" href="#bloc-exemples" data-home-nav-link>Capsules de compétences</a>
                 <a class="home-nav-link nav-link" href="#bloc-clients" data-home-nav-link>Mes clients</a>
                 <a class="home-nav-link nav-link" href="#bloc-contact" data-home-nav-link>Contact</a>
             </div>
@@ -32,7 +33,7 @@
 {% endblock %}
 
 {% block body %}
-<main class="home-page">
+<main class="home-page" data-scroll-contact="{{ scrollToContact|default(false) ? 'true' : 'false' }}">
     <div class="home-block home-block-about" id="bloc-about">
         <div class="container py-5">
             <div class="row align-items-center">
@@ -173,6 +174,86 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-block home-block-examples" id="bloc-exemples">
+        <div class="container py-5">
+            <div class="row justify-content-center mb-5">
+                <div class="col-12 col-lg-9 text-center">
+                    <p class="text-uppercase font-weight-bold home-kicker mb-3">Capsules de compétences</p>
+                    <h2 class="display-4 font-weight-bold mb-4">Des exemples concrets pour montrer ce que je sais faire</h2>
+                    <p class="lead mb-0">
+                        Ces petites capsules présentent un échantillon de ce que je peux réaliser. Elles aident à imaginer
+                        le rendu d’un projet et à voir rapidement comment je peux transformer une idée en page web.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <a class="home-example-card h-100" href="{{ path('app_examples_grid') }}">
+                        <div class="home-example-preview">
+                            <img
+                                class="home-example-image"
+                                src="{{ asset('assets/images/exemples/exemple-1.png') }}"
+                                alt="Aperçu de l'exemple 1"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <div class="home-example-body">
+                            <h3 class="h4 font-weight-bold mb-3">Jolie composition</h3>
+                            <p class="mb-0">
+                                Ce type de composition peut être adapté à un site de photos, à une vitrine de
+                                destination ou à une page qui met l’image au centre.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <a class="home-example-card h-100" href="{{ path('app_examples_dashboard') }}">
+                        <div class="home-example-preview">
+                            <img
+                                class="home-example-image"
+                                src="{{ asset('assets/images/exemples/exemple-2.png') }}"
+                                alt="Aperçu de l'exemple 2"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <div class="home-example-body">
+                            <h3 class="h4 font-weight-bold mb-3">Application web de gestion</h3>
+                            <p class="mb-0">
+                                Vous avez une entreprise et des éléments à gérer ? Ce format permet de suivre un parc
+                                de voitures, des paiements ou d’autres données métier simplement.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-lg-4 mb-4 mb-lg-0">
+                    <a class="home-example-card h-100" href="{{ path('app_examples_bubbles') }}">
+                        <div class="home-example-preview">
+                            <img
+                                class="home-example-image"
+                                src="{{ asset('assets/images/exemples/exemple-3.png') }}"
+                                alt="Aperçu de l'exemple 3"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <div class="home-example-body">
+                            <h3 class="h4 font-weight-bold mb-3">Comparatif</h3>
+                            <p class="mb-0">
+                                Ce style de design peut servir à présenter différentes offres et à aider les utilisateurs
+                                à faire leur choix plus facilement.
+                            </p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
