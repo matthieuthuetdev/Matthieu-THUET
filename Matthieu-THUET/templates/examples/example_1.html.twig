@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exemple 1 - Grille éditoriale{% endblock %}
+
+{% block body %}
+    {% set exampleCards = [
+        { tag: 'HTML', title: 'Structure claire', text: 'Une base propre pour organiser le contenu et garder un parcours lisible.', col: 2, row: 2 },
+        { tag: 'CSS', title: 'Mise en forme', text: 'Des styles précis pour composer une page avec du rythme et de la hiérarchie.', col: 1, row: 1 },
+        { tag: 'Bootstrap', title: 'Grille responsive', text: 'Une composition adaptable qui reste nette sur les grands comme les petits écrans.', col: 2, row: 1 },
+        { tag: 'JavaScript', title: 'Interaction', text: 'Des comportements simples pour rendre la page plus vivante sans la surcharger.', col: 1, row: 2 },
+        { tag: 'PHP', title: 'Logique serveur', text: 'Une base solide pour traiter formulaires, données et contenus dynamiques.', col: 1, row: 1 },
+        { tag: 'Symfony', title: 'Projet structuré', text: 'Un cadre idéal pour construire un site clair et évolutif.', col: 2, row: 2 },
+        { tag: 'WordPress', title: 'Site vitrine', text: 'Parfait pour présenter une activité, un service ou un savoir-faire.', col: 1, row: 1 },
+        { tag: 'SEO', title: 'Lisibilité', text: 'Une structure pensée pour aider le contenu à être compris rapidement.', col: 1, row: 1 },
+        { tag: 'Accessibilité', title: 'Navigation simple', text: 'Des repères lisibles pour rendre la page plus facile à parcourir.', col: 2, row: 1 },
+        { tag: 'UI', title: 'Composition', text: 'Des blocs alignés pour créer un équilibre visuel agréable.', col: 1, row: 1 },
+        { tag: 'UX', title: 'Parcours fluide', text: 'Une lecture naturelle qui guide le regard sans effort.', col: 1, row: 2 },
+        { tag: 'Mobile', title: 'Adaptation', text: 'Les contenus restent propres et exploitables sur mobile.', col: 2, row: 1 },
+        { tag: 'Portfolio', title: 'Mise en avant', text: 'Une structure adaptée pour montrer plusieurs réalisations.', col: 1, row: 1 },
+        { tag: 'Services', title: 'Offres claires', text: 'Un bon format pour détailler plusieurs prestations distinctes.', col: 2, row: 2 },
+        { tag: 'Lieux', title: 'Information locale', text: 'Utile pour décrire un endroit, un espace ou un contexte précis.', col: 1, row: 1 },
+        { tag: 'Photo', title: 'Visuel fort', text: 'Idéal pour un contenu qui repose sur une image ou une ambiance.', col: 1, row: 1 },
+        { tag: 'Comparatif', title: 'Choix simplifié', text: 'Une grille pratique pour comparer plusieurs options rapidement.', col: 3, row: 2 },
+        { tag: 'Synthèse', title: 'Vue d’ensemble', text: 'Une dernière cellule pour résumer l’idée générale du projet.', col: 1, row: 1 }
+    ] %}
+
+    <main class="example-grid-page example-grid-showcase py-5" data-example-grid-page>
+        <div class="container-fluid px-3 px-lg-4 py-4">
+            <div class="row align-items-end mb-4 mb-lg-5">
+                <div class="col-lg-8">
+                    <p class="text-uppercase small font-weight-bold text-warning mb-3">Exemple 1</p>
+                    <h1 class="display-4 font-weight-bold mb-3">Une mosaïque éditoriale plus libre</h1>
+                    <p class="lead mb-0 text-light">
+                        Les blocs ne sont pas tous identiques : certains prennent plus d’espace, d’autres se
+                        glissent en hauteur ou en largeur pour montrer une vraie capacité d’agencement.
+                    </p>
+                </div>
+            </div>
+
+            <section class="example-mosaic-grid" data-example-grid>
+                {% for card in exampleCards %}
+                    <article
+                        class="example-mosaic-card"
+                        data-example-card
+                        style="grid-column: span {{ card.col }}; grid-row: span {{ card.row }};"
+                    >
+                        <span class="badge badge-light mb-3">{{ card.tag }}</span>
+                        <h2 class="h5 font-weight-bold">{{ card.title }}</h2>
+                        <p class="mb-0">{{ card.text }}</p>
+                    </article>
+                {% endfor %}
+            </section>
+        </div>
+    </main>
+{% endblock %}

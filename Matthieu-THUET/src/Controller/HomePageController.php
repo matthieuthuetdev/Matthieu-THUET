@@ -18,12 +18,13 @@ final class HomePageController extends AbstractController
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
+        $scrollToContact = false;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
             $contact = [
                 'firstName' => $formData['firstName'] ?? '',
-                'name' => $formData['name'] ?? '',
+                'lastName' => $formData['lastName'] ?? '',
                 'companyName' => $formData['companyName'] ?? null,
                 'emailAddress' => $formData['emailAddress'] ?? '',
                 'subject' => $formData['subject'] ?? '',
@@ -32,7 +33,7 @@ final class HomePageController extends AbstractController
             ];
 
             $ownerEmail = new Address('mthuet.pro@gmail.com', 'Matthieu THUET');
-            $senderEmail = new Address($contact['emailAddress'], trim($contact['firstName'] . ' ' . $contact['name']));
+            $senderEmail = new Address($contact['emailAddress'], trim($contact['firstName'] . ' ' . $contact['lastName']));
 
             $mailer->send(
                 (new TemplatedEmail())
@@ -59,11 +60,13 @@ final class HomePageController extends AbstractController
 
             $this->addFlash('success', 'Votre message a bien été envoyé.');
 
-            return $this->redirect($this->generateUrl('app_home_page') . '#contact');
+            $form = $this->createForm(ContactType::class);
+            $scrollToContact = true;
         }
 
         return $this->render('home_page/index.html.twig', [
             'contactForm' => $form->createView(),
+            'scrollToContact' => $scrollToContact,
         ]);
     }
 }

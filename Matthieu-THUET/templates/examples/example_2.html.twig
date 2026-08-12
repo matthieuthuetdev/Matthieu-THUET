@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exemple 2 - Interface de gestion{% endblock %}
+
+{% block body %}
+    <main class="example-dashboard-page" data-example-dashboard>
+        <div class="example-dashboard-shell">
+            <aside class="example-dashboard-sidebar">
+                <div class="p-4 p-xl-5 h-100 d-flex flex-column">
+                    <div class="mb-4">
+                        <p class="text-uppercase small font-weight-bold text-warning mb-2">Exemple 2</p>
+                        <h1 class="h2 font-weight-bold mb-3">AutoLoc Gestion</h1>
+                        <p class="text-light-50 mb-0">
+                            Une interface de gestion factice pour une agence de location de voitures.
+                        </p>
+                    </div>
+
+                    <nav class="nav flex-column example-dashboard-nav mb-4">
+                        <button class="nav-link active" type="button" data-dashboard-target="cars">Gestion des voitures</button>
+                        <button class="nav-link" type="button" data-dashboard-target="renters">Gestion des loueurs</button>
+                        <button class="nav-link" type="button" data-dashboard-target="payments">Gestion des paiements</button>
+                        <button class="nav-link" type="button" data-dashboard-target="repairs">Gestion des réparations</button>
+                    </nav>
+
+                    <div class="mt-auto example-dashboard-sidebar-card">
+                        <p class="text-uppercase small font-weight-bold text-warning mb-2">Aujourd'hui</p>
+                        <p class="display-4 font-weight-bold mb-1">24</p>
+                        <p class="mb-0 text-light-50">Locations actives et retours à surveiller.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="example-dashboard-main">
+                <div class="example-dashboard-topbar px-4 px-xl-5 py-4">
+                    <div class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3">
+                        <div>
+                            <p class="text-uppercase small font-weight-bold text-warning mb-1">Interface métier</p>
+                            <h2 class="h3 font-weight-bold mb-0" data-dashboard-section-title>Gestion des voitures</h2>
+                        </div>
+
+                        <div class="btn-group example-dashboard-actions">
+                            <button class="btn btn-dark text-white" type="button" data-dashboard-action="account">Mon compte</button>
+                            <button class="btn btn-dark text-white" type="button" data-dashboard-action="settings">Paramètres</button>
+                            <button class="btn btn-dark text-white" type="button" data-dashboard-action="logout">Déconnexion</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-dashboard-content px-4 px-xl-5 py-4">
+                    <section class="example-dashboard-section is-active" data-dashboard-section="cars"></section>
+                    <section class="example-dashboard-section" data-dashboard-section="renters"></section>
+                    <section class="example-dashboard-section" data-dashboard-section="payments"></section>
+                    <section class="example-dashboard-section" data-dashboard-section="repairs"></section>
+                </div>
+            </section>
+        </div>
+
+        <div class="example-dashboard-drawer" data-dashboard-drawer hidden>
+            <button class="example-dashboard-drawer-backdrop" type="button" data-dashboard-drawer-close aria-label="Fermer le panneau"></button>
+            <aside class="example-dashboard-drawer-panel">
+                <div class="p-4 p-xl-5 h-100 d-flex flex-column">
+                    <div class="mb-4">
+                        <p class="text-uppercase small font-weight-bold text-warning mb-2" data-dashboard-drawer-title>Mon compte</p>
+                        <h3 class="h2 font-weight-bold mb-0" data-dashboard-drawer-heading>Informations de profil</h3>
+                    </div>
+
+                    <div class="dashboard-drawer-panel" data-dashboard-drawer-section="account">
+                        <form class="example-dashboard-form" data-dashboard-form="account">
+                            <div class="form-group">
+                                <label for="dashboardName">Nom</label>
+                                <input id="dashboardName" class="form-control" type="text" name="name" value="Alicia Morel">
+                            </div>
+                            <div class="form-group">
+                                <label for="dashboardCompany">Société</label>
+                                <input id="dashboardCompany" class="form-control" type="text" name="company" value="Nord Mobility">
+                            </div>
+                            <div class="form-group">
+                                <label for="dashboardPhone">Téléphone</label>
+                                <input id="dashboardPhone" class="form-control" type="tel" name="phone" value="06 12 34 56 78">
+                            </div>
+                            <div class="form-group">
+                                <label for="dashboardEmail">E-mail</label>
+                                <input id="dashboardEmail" class="form-control" type="email" name="email" value="alicia.morel@example.com">
+                            </div>
+                            <button class="btn btn-dark text-white btn-block" type="submit">Enregistrer</button>
+                        </form>
+                    </div>
+
+                    <div class="dashboard-drawer-panel d-none" data-dashboard-drawer-section="settings">
+                        <form class="example-dashboard-form" data-dashboard-form="settings">
+                            <div class="form-group">
+                                <label for="dashboardTheme">Affichage</label>
+                                <select id="dashboardTheme" class="form-control" name="theme">
+                                    <option value="standard">Standard</option>
+                                    <option value="contrast">Contraste renforcé</option>
+                                    <option value="soft">Lumière douce</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dashboardDensity">Densité</label>
+                                <select id="dashboardDensity" class="form-control" name="density">
+                                    <option value="comfortable">Confortable</option>
+                                    <option value="compact">Compacte</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dashboardAnimation">Animations</label>
+                                <select id="dashboardAnimation" class="form-control" name="animation">
+                                    <option value="smooth">Douces</option>
+                                    <option value="reduced">Réduites</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-dark text-white btn-block" type="submit">Enregistrer</button>
+                        </form>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="example-dashboard-popup" data-dashboard-popup hidden>
+            <div class="example-dashboard-popup-card">
+                <p class="text-uppercase small font-weight-bold text-danger mb-2">Confirmation</p>
+                <h3 class="h2 font-weight-bold mb-3" data-dashboard-popup-title>Succès</h3>
+                <p class="mb-4" data-dashboard-popup-message>Les modifications ont été prises en compte.</p>
+                <button class="btn btn-dark" type="button" data-dashboard-popup-close>OK</button>
+            </div>
+        </div>
+    </main>
+{% endblock %}

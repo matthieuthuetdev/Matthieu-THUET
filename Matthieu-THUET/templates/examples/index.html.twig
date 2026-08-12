@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exemples de pages{% endblock %}
+
+{% block body %}
+    <main class="examples-index-page py-5">
+        <div class="container py-4">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-9 text-center">
+                    <p class="text-uppercase small font-weight-bold text-danger mb-3">Démo</p>
+                    <h1 class="display-4 font-weight-bold mb-4">Exemples de créations de pages web</h1>
+                    <p class="lead text-light mb-0">
+                        Trois ambiances différentes pour montrer des idées de mise en page, d’interface métier
+                        et d’animation interactive.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="example-index-feature p-4 p-lg-5">
+                        <p class="text-uppercase small font-weight-bold text-danger mb-3">Aperçu de mes compétences</p>
+                        <h2 class="display-5 font-weight-bold mb-3">Trois capsules pour montrer concrètement ce que je sais faire</h2>
+                        <p class="lead text-dark mb-0">
+                            Chaque exemple sert à illustrer une façon différente de construire une interface :
+                            une grille éditoriale, un tableau de bord métier et une page immersive au scroll.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <article class="card h-100 border-0 example-index-card">
+                        <div class="card-body d-flex flex-column">
+                            <p class="small text-uppercase font-weight-bold text-danger">Exemple 1</p>
+                            <h2 class="h3 font-weight-bold mb-3">Grille éditoriale</h2>
+                            <p class="text-muted mb-4">
+                                Une page quadrillée avec des blocs de tailles différentes pour valoriser des
+                                contenus courts et des zones mises en avant.
+                            </p>
+                            <a class="btn btn-dark mt-auto align-self-start" href="{{ path('app_examples_grid') }}">Voir la page</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <article class="card h-100 border-0 example-index-card">
+                        <div class="card-body d-flex flex-column">
+                            <p class="small text-uppercase font-weight-bold text-danger">Exemple 2</p>
+                            <h2 class="h3 font-weight-bold mb-3">Mini interface de gestion</h2>
+                            <p class="text-muted mb-4">
+                                Une maquette de tableau de bord pour une agence de location de voitures, avec
+                                navigation latérale et éléments de suivi.
+                            </p>
+                            <a class="btn btn-dark mt-auto align-self-start" href="{{ path('app_examples_dashboard') }}">Voir la page</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <article class="card h-100 border-0 example-index-card">
+                        <div class="card-body d-flex flex-column">
+                            <p class="small text-uppercase font-weight-bold text-danger">Exemple 3</p>
+                            <h2 class="h3 font-weight-bold mb-3">Scroll cinématique</h2>
+                            <p class="text-muted mb-4">
+                                Une page immersive qui fait défiler les sections une par une avec un menu latéral
+                                qui suit la position de lecture.
+                            </p>
+                            <a class="btn btn-dark mt-auto align-self-start" href="{{ path('app_examples_bubbles') }}">Voir la page</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

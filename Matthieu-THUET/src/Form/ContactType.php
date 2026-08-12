@@ -18,7 +18,7 @@ class ContactType extends AbstractType
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom *',
             ])
-            ->add('name', TextType::class, [
+            ->add('lastName', TextType::class, [
                 'label' => 'Nom *',
             ])
             ->add('companyName', TextType::class, [
