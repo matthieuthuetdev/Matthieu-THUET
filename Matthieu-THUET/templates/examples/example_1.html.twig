@@ -4,35 +4,136 @@
 
 {% block body %}
     {% set exampleCards = [
-        { tag: 'HTML', title: 'Structure claire', text: 'Une base propre pour organiser le contenu et garder un parcours lisible.', col: 2, row: 2 },
-        { tag: 'CSS', title: 'Mise en forme', text: 'Des styles précis pour composer une page avec du rythme et de la hiérarchie.', col: 1, row: 1 },
-        { tag: 'Bootstrap', title: 'Grille responsive', text: 'Une composition adaptable qui reste nette sur les grands comme les petits écrans.', col: 2, row: 1 },
-        { tag: 'JavaScript', title: 'Interaction', text: 'Des comportements simples pour rendre la page plus vivante sans la surcharger.', col: 1, row: 2 },
-        { tag: 'PHP', title: 'Logique serveur', text: 'Une base solide pour traiter formulaires, données et contenus dynamiques.', col: 1, row: 1 },
-        { tag: 'Symfony', title: 'Projet structuré', text: 'Un cadre idéal pour construire un site clair et évolutif.', col: 2, row: 2 },
-        { tag: 'WordPress', title: 'Site vitrine', text: 'Parfait pour présenter une activité, un service ou un savoir-faire.', col: 1, row: 1 },
-        { tag: 'SEO', title: 'Lisibilité', text: 'Une structure pensée pour aider le contenu à être compris rapidement.', col: 1, row: 1 },
-        { tag: 'Accessibilité', title: 'Navigation simple', text: 'Des repères lisibles pour rendre la page plus facile à parcourir.', col: 2, row: 1 },
-        { tag: 'UI', title: 'Composition', text: 'Des blocs alignés pour créer un équilibre visuel agréable.', col: 1, row: 1 },
-        { tag: 'UX', title: 'Parcours fluide', text: 'Une lecture naturelle qui guide le regard sans effort.', col: 1, row: 2 },
-        { tag: 'Mobile', title: 'Adaptation', text: 'Les contenus restent propres et exploitables sur mobile.', col: 2, row: 1 },
-        { tag: 'Portfolio', title: 'Mise en avant', text: 'Une structure adaptée pour montrer plusieurs réalisations.', col: 1, row: 1 },
-        { tag: 'Services', title: 'Offres claires', text: 'Un bon format pour détailler plusieurs prestations distinctes.', col: 2, row: 2 },
-        { tag: 'Lieux', title: 'Information locale', text: 'Utile pour décrire un endroit, un espace ou un contexte précis.', col: 1, row: 1 },
-        { tag: 'Photo', title: 'Visuel fort', text: 'Idéal pour un contenu qui repose sur une image ou une ambiance.', col: 1, row: 1 },
-        { tag: 'Comparatif', title: 'Choix simplifié', text: 'Une grille pratique pour comparer plusieurs options rapidement.', col: 3, row: 2 },
-        { tag: 'Synthèse', title: 'Vue d’ensemble', text: 'Une dernière cellule pour résumer l’idée générale du projet.', col: 1, row: 1 }
+        {
+            tag: 'HTML',
+            title: 'Structure claire',
+            text: 'Le HTML est le langage qui permet de structurer une page web. Il définit les titres, les paragraphes, les listes, les liens, les images et les différentes parties d’une page. Il permet au navigateur de comprendre comment organiser le contenu et donne également des informations importantes aux moteurs de recherche et aux technologies d’assistance.',
+            col: 2,
+            tall: true
+        },
+        {
+            tag: 'CSS',
+            title: 'Mise en forme',
+            text: 'Le CSS permet de contrôler l’apparence d’un site web. Il permet de gérer les couleurs, les tailles, les espacements, les polices, les bordures et la disposition des éléments.',
+            col: 1
+        },
+        {
+            tag: 'Bootstrap',
+            title: 'Grille responsive',
+            text: 'Bootstrap fournit des outils permettant de créer plus rapidement des interfaces adaptées aux ordinateurs, tablettes et smartphones. Son système de grille facilite notamment la création de mises en page responsive.',
+            col: 2
+        },
+        {
+            tag: 'JavaScript',
+            title: 'Interaction',
+            text: 'JavaScript permet de rendre une page interactive. Il peut réagir aux actions de l’utilisateur, modifier le contenu affiché, gérer des formulaires ou créer des animations.',
+            col: 1
+        },
+        {
+            tag: 'PHP',
+            title: 'Logique serveur',
+            text: 'PHP est un langage exécuté sur le serveur. Il permet notamment de traiter des formulaires, communiquer avec une base de données, gérer des utilisateurs et générer du contenu dynamique.',
+            col: 1
+        },
+        {
+            tag: 'Symfony',
+            title: 'Projet structuré',
+            text: 'Symfony est un framework PHP qui fournit une structure pour développer des applications web. Il permet notamment d’organiser les routes, les contrôleurs, les services, les formulaires et la gestion des données.',
+            col: 2,
+            tall: true
+        },
+        {
+            tag: 'WordPress',
+            title: 'Site vitrine',
+            text: 'WordPress est un système de gestion de contenu qui permet de créer et administrer un site web sans devoir programmer chaque élément manuellement.',
+            col: 1
+        },
+        {
+            tag: 'SEO',
+            title: 'Lisibilité',
+            text: 'Le SEO regroupe les techniques permettant d’améliorer la visibilité d’un site dans les moteurs de recherche et de faciliter la compréhension de son contenu.',
+            col: 1
+        },
+        {
+            tag: 'Accessibilité',
+            title: 'Navigation simple',
+            text: 'L’accessibilité consiste à rendre un site utilisable par le plus grand nombre. Cela concerne notamment la navigation au clavier, les lecteurs d’écran, les contrastes et la structure du contenu.',
+            col: 2,
+            tall: true
+        },
+        {
+            tag: 'UI',
+            title: 'Composition',
+            text: 'L’UI concerne la conception visuelle d’une interface : boutons, couleurs, typographies, espacements et organisation des différents éléments.',
+            col: 1
+        },
+        {
+            tag: 'UX',
+            title: 'Parcours fluide',
+            text: 'L’UX concerne l’expérience vécue par l’utilisateur. Elle cherche à rendre les parcours simples, compréhensibles et efficaces.',
+            col: 1
+        },
+        {
+            tag: 'Mobile',
+            title: 'Adaptation',
+            text: 'Le responsive design permet à une interface de s’adapter aux différentes tailles d’écran afin de rester utilisable sur ordinateur, tablette et smartphone.',
+            col: 2
+        },
+        {
+            tag: 'Portfolio',
+            title: 'Mise en avant',
+            text: 'Une présentation structurée permet de mettre en valeur différentes réalisations, compétences et technologies utilisées.',
+            col: 1
+        },
+        {
+            tag: 'Services',
+            title: 'Offres claires',
+            text: 'Une structure organisée permet de présenter plusieurs prestations et d’expliquer clairement ce que chaque service peut apporter.',
+            col: 2
+        },
+        {
+            tag: 'Lieux',
+            title: 'Information locale',
+            text: 'Une présentation adaptée permet de regrouper clairement les informations concernant un lieu, une adresse, des horaires ou des services.',
+            col: 1
+        },
+        {
+            tag: 'Photo',
+            title: 'Visuel fort',
+            text: 'Les images permettent de présenter un produit, un lieu ou une réalisation et peuvent renforcer l’identité visuelle d’un projet.',
+            col: 1
+        },
+        {
+            tag: 'Comparatif',
+            title: 'Choix simplifié',
+            text: 'Une grille comparative permet de présenter plusieurs options et leurs caractéristiques afin d’aider l’utilisateur à comparer rapidement différentes solutions.',
+            col: 3,
+            tall: true
+        },
+        {
+            tag: 'Synthèse',
+            title: 'Vue d’ensemble',
+            text: 'Une synthèse permet de regrouper les informations importantes d’un projet et de donner rapidement une vision globale des technologies et des objectifs.',
+            col: 1
+        }
     ] %}
 
     <main class="example-grid-page example-grid-showcase py-5" data-example-grid-page>
         <div class="container-fluid px-3 px-lg-4 py-4">
             <div class="row align-items-end mb-4 mb-lg-5">
                 <div class="col-lg-8">
-                    <p class="text-uppercase small font-weight-bold text-warning mb-3">Exemple 1</p>
-                    <h1 class="display-4 font-weight-bold mb-3">Une mosaïque éditoriale plus libre</h1>
+                    <p class="text-uppercase small font-weight-bold text-warning mb-3">
+                        Exemple 1
+                    </p>
+
+                    <h1 class="display-4 font-weight-bold mb-3">
+                        Une mosaïque éditoriale plus libre
+                    </h1>
+
                     <p class="lead mb-0 text-light">
-                        Les blocs ne sont pas tous identiques : certains prennent plus d’espace, d’autres se
-                        glissent en hauteur ou en largeur pour montrer une vraie capacité d’agencement.
+                        Les blocs ne sont pas tous identiques : certains prennent plus d’espace,
+                        d’autres se glissent en hauteur ou en largeur pour montrer une vraie
+                        capacité d’agencement.
                     </p>
                 </div>
             </div>
@@ -40,13 +141,21 @@
             <section class="example-mosaic-grid" data-example-grid>
                 {% for card in exampleCards %}
                     <article
-                        class="example-mosaic-card"
+                        class="example-mosaic-card{{ card.tall is defined and card.tall ? ' example-mosaic-card--tall' : '' }}"
                         data-example-card
-                        style="grid-column: span {{ card.col }}; grid-row: span {{ card.row }};"
+                        style="grid-column: span {{ card.col }};"
                     >
-                        <span class="badge badge-light mb-3">{{ card.tag }}</span>
-                        <h2 class="h5 font-weight-bold">{{ card.title }}</h2>
-                        <p class="mb-0">{{ card.text }}</p>
+                        <span class="badge badge-light">
+                            {{ card.tag }}
+                        </span>
+
+                        <h2 class="h5 font-weight-bold">
+                            {{ card.title }}
+                        </h2>
+
+                        <p class="mb-0">
+                            {{ card.text }}
+                        </p>
                     </article>
                 {% endfor %}
             </section>

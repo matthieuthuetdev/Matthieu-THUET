@@ -384,7 +384,7 @@ body::-webkit-scrollbar-thumb,
     color: #0b1524;
 }
 
-.example-grid-page {
+ .example-grid-page {
     min-height: 100vh;
     background: #10263f;
 }
@@ -392,11 +392,10 @@ body::-webkit-scrollbar-thumb,
 .example-mosaic-grid {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-auto-rows: clamp(5.75rem, 7vw, 8rem);
+    grid-auto-rows: auto;
     grid-auto-flow: dense;
     gap: 0.9rem;
-    min-height: clamp(42rem, 82vh, 70rem);
-    align-content: start;
+    align-items: start;
     width: min(100%, 1400px);
     margin: 0 auto;
 }
@@ -408,27 +407,49 @@ body::-webkit-scrollbar-thumb,
     padding: 0.95rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: stretch;
     min-width: 0;
-    min-height: 0;
+    min-height: 7rem;
+    height: auto;
     overflow: hidden;
     opacity: 0;
     transform: translateY(18px) scale(0.92);
     transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s ease, box-shadow 0.25s ease;
     box-shadow: none;
     will-change: transform, opacity;
-    width: 100%;
-    height: 100%;
     justify-self: stretch;
-    align-self: stretch;
-    aspect-ratio: auto;
+    align-self: start;
+}
+
+.example-mosaic-card--tall {
+    min-height: 14rem;
 }
 
 .example-mosaic-card .badge {
+    display: inline-block;
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: 0.55rem;
     background: rgba(255, 255, 255, 0.12) !important;
     color: #ffffff !important;
     border: 1px solid rgba(255, 255, 255, 0.16);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.example-mosaic-card h2 {
+    margin-bottom: 0.45rem;
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+
+.example-mosaic-card p {
+    margin-bottom: 0;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .example-mosaic-card:nth-child(2n) {
@@ -1205,9 +1226,17 @@ input[type='reset']:focus {
     }
 
     .example-mosaic-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: auto;
-        min-height: auto;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-auto-rows: auto;
+        gap: 0.8rem;
+    }
+
+    .example-mosaic-card {
+        min-height: 7rem;
+    }
+
+    .example-mosaic-card--tall {
+        min-height: 13rem;
     }
 
     .example-dashboard-shell {
@@ -1317,14 +1346,17 @@ input[type='reset']:focus {
     .example-mosaic-grid {
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
-        grid-template-rows: auto;
+        gap: 0.7rem;
     }
 
     .example-mosaic-card {
         grid-column: auto;
-        grid-row: auto;
-        min-height: 9rem;
+        min-height: 8rem;
         width: 100%;
+    }
+
+    .example-mosaic-card--tall {
+        min-height: 12rem;
     }
 
     .example-bubbles-stage {
