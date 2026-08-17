@@ -3,118 +3,199 @@
 {% block title %}Exemple 3 - Scroll cinématique{% endblock %}
 
 {% block body %}
-    {% set hotelSuites = [
-        {
-            id: 'scene-basic',
-            number: '01',
-            title: 'Suite basic',
-            subtitle: 'L’essentiel pour un séjour simple et confortable.',
-            text: 'Une chambre avec un lit confortable, une salle de bain privative et tout ce qu’il faut pour profiter d’un séjour calme et efficace.',
-            details: ['Lit double ou deux lits simples', 'Salle de bain privée', 'Espace repos fonctionnel'],
-            price: '50 € / nuit',
-            motion: 'up',
-            bg: '#0f2340'
-        },
-        {
-            id: 'scene-basic-plus',
-            number: '02',
-            title: 'Suite basic + petit déjeuner',
-            subtitle: 'La même chambre, avec le petit déjeuner inclus.',
-            text: 'La suite basic, avec le petit déjeuner compris pour commencer la journée tranquillement, sans contrainte supplémentaire.',
-            details: ['Même base que la suite basic', 'Petit déjeuner compris', 'Service simple et pratique'],
-            price: '70 € / nuit',
-            motion: 'left',
-            bg: '#1a355e'
-        },
-        {
-            id: 'scene-premium',
-            number: '03',
-            title: 'Suite premium',
-            subtitle: 'Une version plus complète, pensée pour le confort.',
-            text: 'La suite basic, avec en plus l’accès à la piscine de l’hôtel et aux services de soins pour un séjour plus agréable et plus reposant.',
-            details: ['Même base que la suite basic', 'Accès à la piscine', 'Services de soins de l’hôtel'],
-            price: '130 € / nuit',
-            motion: 'right',
-            bg: '#0f3f54'
-        },
-        {
-            id: 'scene-privilege',
-            number: '04',
-            title: 'Suite privilège',
-            subtitle: 'Le confort premium, avec encore plus de service.',
-            text: 'La suite premium, avec en plus un accès illimité au buffet 24h/24 et 7j/7, ainsi qu’un agent de l’hôtel à votre service.',
-            details: ['Même base que la suite premium', 'Buffet illimité 24h/24 et 7j/7', 'Agent dédié à votre service'],
-            price: '200 € / nuit',
-            motion: 'up',
-            bg: '#173b2e'
-        },
-        {
-            id: 'scene-royal',
-            number: '05',
-            title: 'Suite royale',
-            subtitle: 'L’expérience la plus complète.',
-            text: 'Une suite de 120 m² avec vue sur la piscine ou sur les montagnes au choix. Elle inclut aussi un accès illimité à notre cinéma avec tous les films à la demande.',
-            details: ['120 m²', 'Vue piscine ou montagnes', 'Cinéma à la demande inclus'],
-            price: '320 € / nuit',
-            motion: 'left',
-            bg: '#41263f'
-        }
-    ] %}
 
-    <main class="example-cinema-page" data-example-cinema>
-        <div class="container-fluid px-0">
-            <div class="row no-gutters">
-                <aside class="col-lg-2 col-xl-2 example-cinema-sidebar">
-                    <div class="example-cinema-sidebar-inner">
-                        <p class="text-uppercase small font-weight-bold text-warning mb-3">Exemple 3</p>
-                        <h1 class="display-4 font-weight-bold mb-4">Des suites d’hôtel qui défilent</h1>
-                        <p class="lead mb-4">
-                            Le menu de gauche suit le scroll. Chaque suite occupe tout l’écran et le passage vers
-                            la suivante se fait d’un coup, comme une vraie présentation fluide.
-                        </p>
+{% set hotelSuites = [
+    {
+        id: 'scene-basic',
+        number: '01',
+        title: 'Suite basic',
+        subtitle: 'L’essentiel pour un séjour simple et confortable.',
+        text: 'Une chambre avec un lit confortable, une salle de bain privative et tout ce qu’il faut pour profiter d’un séjour calme et efficace.',
+        details: [
+            'Lit double ou deux lits simples',
+            'Salle de bain privée',
+            'Espace repos fonctionnel'
+        ],
+        price: '50 € / nuit',
+        bg: '#0f2340'
+    },
+    {
+        id: 'scene-basic-plus',
+        number: '02',
+        title: 'Suite basic + petit déjeuner',
+        subtitle: 'La même chambre, avec le petit déjeuner inclus.',
+        text: 'La suite basic, avec le petit déjeuner compris pour commencer la journée tranquillement, sans contrainte supplémentaire.',
+        details: [
+            'Même base que la suite basic',
+            'Petit déjeuner compris',
+            'Service simple et pratique'
+        ],
+        price: '70 € / nuit',
+        bg: '#1a355e'
+    },
+    {
+        id: 'scene-premium',
+        number: '03',
+        title: 'Suite premium',
+        subtitle: 'Une version plus complète, pensée pour le confort.',
+        text: 'La suite basic, avec en plus l’accès à la piscine de l’hôtel et aux services de soins pour un séjour plus agréable et plus reposant.',
+        details: [
+            'Même base que la suite basic',
+            'Accès à la piscine',
+            'Services de soins de l’hôtel'
+        ],
+        price: '130 € / nuit',
+        bg: '#0f3f54'
+    },
+    {
+        id: 'scene-privilege',
+        number: '04',
+        title: 'Suite privilège',
+        subtitle: 'Le confort premium, avec encore plus de service.',
+        text: 'La suite premium, avec en plus un accès illimité au buffet 24h/24 et 7j/7, ainsi qu’un agent de l’hôtel à votre service.',
+        details: [
+            'Même base que la suite premium',
+            'Buffet illimité 24h/24 et 7j/7',
+            'Agent dédié à votre service'
+        ],
+        price: '200 € / nuit',
+        bg: '#173b2e'
+    },
+    {
+        id: 'scene-royal',
+        number: '05',
+        title: 'Suite royale',
+        subtitle: 'L’expérience la plus complète.',
+        text: 'Une suite de 120 m² avec vue sur la piscine ou sur les montagnes au choix. Elle inclut aussi un accès illimité à notre cinéma avec tous les films à la demande.',
+        details: [
+            '120 m²',
+            'Vue piscine ou montagnes',
+            'Cinéma à la demande inclus'
+        ],
+        price: '320 € / nuit',
+        bg: '#41263f'
+    }
+] %}
 
-                        <nav class="example-cinema-nav" data-cinema-nav>
-                            {% for suite in hotelSuites %}
-                                <a class="example-cinema-link{{ loop.first ? ' is-active' : '' }}" href="#{{ suite.id }}" data-cinema-link>
-                                    <span>{{ suite.number }}</span>
-                                    <strong>{{ suite.title }}</strong>
-                                    <small>{{ suite.subtitle }}</small>
-                                </a>
-                            {% endfor %}
-                        </nav>
-                    </div>
-                </aside>
+<main class="example-cinema-page" data-example-cinema>
 
-                <section class="col-lg-10 col-xl-10 example-cinema-stage">
-                    {% for suite in hotelSuites %}
-                        <article
-                            class="example-cinema-scene"
-                            id="{{ suite.id }}"
-                            data-cinema-scene
-                            data-motion="{{ suite.motion }}"
-                            style="--scene-bg: {{ suite.bg }};"
-                        >
-                            <div class="example-cinema-scene-inner">
-                                <div class="example-cinema-suite-card">
-                                    <p class="example-cinema-scene-number">{{ suite.number }}</p>
-                                    <h2>{{ suite.title }}</h2>
-                                    <p class="example-cinema-suite-subtitle">{{ suite.subtitle }}</p>
-                                    <p>{{ suite.text }}</p>
-                                    <ul>
-                                        {% for detail in suite.details %}
-                                            <li>{{ detail }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                    <div class="example-cinema-suite-footer">
-                                        <strong>{{ suite.price }}</strong>
-                                        <button class="btn btn-light" type="button">Réserver</button>
-                                    </div>
+    <div class="container-fluid px-0">
+
+        <div class="row no-gutters">
+
+            <aside class="col-lg-2 col-xl-2 example-cinema-sidebar">
+
+                <div class="example-cinema-sidebar-inner">
+
+                    <p class="text-uppercase small font-weight-bold text-warning mb-3">
+                        Exemple 3
+                    </p>
+
+                    <h1 class="display-4 font-weight-bold mb-4">
+                        Des suites d’hôtel qui défilent
+                    </h1>
+
+                    <p class="lead mb-4">
+                        Le menu de gauche suit le scroll. Chaque suite occupe tout l’écran et le passage vers la suivante se fait d’un coup, comme une vraie présentation fluide.
+                    </p>
+
+                    <nav class="example-cinema-nav" data-cinema-nav aria-label="Navigation des suites">
+
+                        {% for suite in hotelSuites %}
+
+                            <a
+                                class="example-cinema-link{{ loop.first ? ' is-active' : '' }}"
+                                href="#{{ suite.id }}"
+                                data-cinema-link
+                                {% if loop.first %}aria-current="true"{% else %}aria-current="false"{% endif %}
+                            >
+                                <span>{{ suite.number }}</span>
+
+                                <strong>{{ suite.title }}</strong>
+
+                                <small>{{ suite.subtitle }}</small>
+                            </a>
+
+                        {% endfor %}
+
+                    </nav>
+
+                </div>
+
+            </aside>
+
+            <section class="col-lg-10 col-xl-10 example-cinema-stage">
+
+                {% for suite in hotelSuites %}
+
+                    <article
+                        class="example-cinema-scene"
+                        id="{{ suite.id }}"
+                        data-cinema-scene
+                        style="--scene-bg: {{ suite.bg }};"
+                    >
+
+                        <div class="example-cinema-scene-inner">
+
+                            <div class="example-cinema-suite-card">
+
+                                <p class="example-cinema-scene-number">
+                                    {{ suite.number }}
+                                </p>
+
+                                <h2>
+                                    {{ suite.title }}
+                                </h2>
+
+                                <p class="example-cinema-suite-subtitle">
+                                    {{ suite.subtitle }}
+                                </p>
+
+                                <p>
+                                    {{ suite.text }}
+                                </p>
+
+                                <ul>
+
+                                    {% for detail in suite.details %}
+
+                                        <li>
+                                            {{ detail }}
+                                        </li>
+
+                                    {% endfor %}
+
+                                </ul>
+
+                                <div class="example-cinema-suite-footer">
+
+                                    <strong>
+                                        {{ suite.price }}
+                                    </strong>
+
+                                    <button
+                                        class="btn btn-light"
+                                        type="button"
+                                    >
+                                        Réserver
+                                    </button>
+
                                 </div>
+
                             </div>
-                        </article>
-                    {% endfor %}
-                </section>
-            </div>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </section>
+
         </div>
-    </main>
+
+    </div>
+
+</main>
+
 {% endblock %}

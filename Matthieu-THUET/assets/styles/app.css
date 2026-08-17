@@ -4,7 +4,6 @@ body {
     color: #ffffff;
     scrollbar-width: thin;
     scrollbar-color: #c40000 transparent;
-    scroll-behavior: smooth;
 }
 
 body.example-cinema-lock {
@@ -710,8 +709,6 @@ body::-webkit-scrollbar-thumb,
     min-height: 100vh;
     background: #07111e;
     color: #ffffff;
-    height: 100vh;
-    overflow: hidden;
 }
 
 .example-cinema-sidebar {
@@ -759,7 +756,11 @@ body::-webkit-scrollbar-thumb,
     text-decoration: none;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.03);
-    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .example-cinema-link span {
@@ -789,45 +790,25 @@ body::-webkit-scrollbar-thumb,
 
 .example-cinema-stage {
     min-height: 100vh;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
 }
 
 .example-cinema-scene {
     min-height: 100vh;
-    height: 100vh;
-    scroll-margin-top: 0;
+    min-height: 100svh;
     background: var(--scene-bg, #08111f);
     display: flex;
     align-items: center;
     padding: 5rem 1.5rem;
     position: relative;
-    overflow: hidden;
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(100%);
-    z-index: 0;
-    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.75s ease;
-}
-
-.example-cinema-scene.is-active {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-    z-index: 2;
+    scroll-margin-top: 0;
 }
 
 .example-cinema-scene-inner {
     position: relative;
     z-index: 1;
+    width: 100%;
     max-width: 44rem;
     margin: 0 auto;
-    transform: translateY(24px);
-    opacity: 0;
-    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
 }
 
 .example-cinema-suite-card {
@@ -875,61 +856,6 @@ body::-webkit-scrollbar-thumb,
 .example-cinema-suite-footer strong {
     font-size: 1.15rem;
     letter-spacing: 0.02em;
-}
-
-.example-cinema-scene.is-active .example-cinema-scene-inner {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.example-cinema-scene.is-entering-from-top {
-    opacity: 1;
-    transform: translateY(-100%);
-    z-index: 1;
-}
-
-.example-cinema-scene.is-entering-from-bottom {
-    opacity: 1;
-    transform: translateY(100%);
-    z-index: 1;
-}
-
-.example-cinema-scene.is-leaving-to-top {
-    opacity: 1;
-    transform: translateY(-100%);
-    z-index: 2;
-}
-
-.example-cinema-scene.is-leaving-to-bottom {
-    opacity: 1;
-    transform: translateY(100%);
-    z-index: 2;
-}
-
-.example-cinema-page.is-transitioning .example-cinema-scene.is-active {
-    will-change: transform, opacity;
-}
-
-.example-cinema-page.is-transitioning .example-cinema-scene-inner {
-    transition-duration: 0.5s;
-}
-
-.example-cinema-scene[data-motion='left'] .example-cinema-scene-inner {
-    transform: translateX(40px);
-}
-
-.example-cinema-scene[data-motion='right'] .example-cinema-scene-inner {
-    transform: translateX(-40px);
-}
-
-.example-cinema-scene[data-motion='up'] .example-cinema-scene-inner {
-    transform: translateY(32px);
-}
-
-.example-cinema-scene.is-active[data-motion='left'] .example-cinema-scene-inner,
-.example-cinema-scene.is-active[data-motion='right'] .example-cinema-scene-inner,
-.example-cinema-scene.is-active[data-motion='up'] .example-cinema-scene-inner {
-    transform: translate(0, 0);
 }
 
 .example-cinema-scene-number {
@@ -1324,29 +1250,14 @@ input[type='reset']:focus {
     }
 
     .example-cinema-scene {
+        min-height: 100vh;
+        min-height: 100svh;
         padding: 4.5rem 1.25rem;
     }
 
-    .example-cinema-page {
-        height: auto;
-        overflow: auto;
-    }
-
     .example-cinema-stage {
-        height: auto;
         min-height: auto;
         position: static;
-    }
-
-    .example-cinema-scene {
-        position: relative;
-        inset: auto;
-        min-height: auto;
-        height: auto;
-        opacity: 1;
-        pointer-events: auto;
-        transform: none !important;
-        transition: none;
     }
 
     .example-cinema-nav {

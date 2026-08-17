@@ -15,7 +15,10 @@ function scrollToElement(selector) {
 
     window.requestAnimationFrame(() => {
         const navHeight = nav.offsetHeight;
-        const targetTop = window.scrollY + target.getBoundingClientRect().top - navHeight;
+        const targetTop =
+            window.scrollY +
+            target.getBoundingClientRect().top -
+            navHeight;
 
         window.scrollTo({
             top: targetTop,
@@ -42,7 +45,10 @@ function restorePagePosition() {
 }
 
 function initializeHomePageInteractions() {
-    const navLinks = Array.from(document.querySelectorAll('[data-home-nav-link]'));
+    const navLinks = Array.from(
+        document.querySelectorAll('[data-home-nav-link]')
+    );
+
     const navMenu = document.querySelector('#homeNavMenu');
 
     navLinks.forEach((link) => {
@@ -51,6 +57,7 @@ function initializeHomePageInteractions() {
         }
 
         link.dataset.homeNavBound = 'true';
+
         link.addEventListener('click', (event) => {
             const targetId = link.getAttribute('href');
 
@@ -68,20 +75,29 @@ function initializeHomePageInteractions() {
             event.preventDefault();
 
             const navHeight = nav.offsetHeight;
-            const targetTop = window.scrollY + target.getBoundingClientRect().top - navHeight;
+
+            const targetTop =
+                window.scrollY +
+                target.getBoundingClientRect().top -
+                navHeight;
 
             window.scrollTo({
                 top: targetTop,
                 behavior: 'smooth',
             });
 
-            if (navMenu && navMenu.classList.contains('show')) {
+            if (
+                navMenu &&
+                navMenu.classList.contains('show')
+            ) {
                 window.jQuery(navMenu).collapse('hide');
             }
         });
     });
 
-    const toggleButtons = Array.from(document.querySelectorAll('[data-home-toggle]'));
+    const toggleButtons = Array.from(
+        document.querySelectorAll('[data-home-toggle]')
+    );
 
     toggleButtons.forEach((button) => {
         if (button.dataset.homeToggleBound === 'true') {
@@ -89,23 +105,35 @@ function initializeHomePageInteractions() {
         }
 
         button.dataset.homeToggleBound = 'true';
+
         button.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
 
             const panelName = button.dataset.homeToggle;
-            const panel = document.querySelector(`[data-home-panel="${panelName}"]`);
+
+            const panel = document.querySelector(
+                `[data-home-panel="${panelName}"]`
+            );
 
             if (!panel) {
                 return;
             }
 
             const isOpen = !panel.hidden;
-            button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+
+            button.setAttribute(
+                'aria-expanded',
+                isOpen ? 'false' : 'true'
+            );
 
             if (isOpen) {
-                panel.style.maxHeight = `${panel.scrollHeight}px`;
-                panel.classList.remove('home-expandable-panel-open');
+                panel.style.maxHeight =
+                    `${panel.scrollHeight}px`;
+
+                panel.classList.remove(
+                    'home-expandable-panel-open'
+                );
 
                 window.requestAnimationFrame(() => {
                     panel.style.maxHeight = '0px';
@@ -123,8 +151,12 @@ function initializeHomePageInteractions() {
             panel.style.maxHeight = '0px';
 
             window.requestAnimationFrame(() => {
-                panel.style.maxHeight = `${panel.scrollHeight}px`;
-                panel.classList.add('home-expandable-panel-open');
+                panel.style.maxHeight =
+                    `${panel.scrollHeight}px`;
+
+                panel.classList.add(
+                    'home-expandable-panel-open'
+                );
             });
 
             window.setTimeout(() => {
@@ -135,15 +167,22 @@ function initializeHomePageInteractions() {
 }
 
 function initializeExampleGrid() {
-    const page = document.querySelector('[data-example-grid-page]');
+    const page = document.querySelector(
+        '[data-example-grid-page]'
+    );
 
-    if (!page || page.dataset.exampleGridBound === 'true') {
+    if (
+        !page ||
+        page.dataset.exampleGridBound === 'true'
+    ) {
         return;
     }
 
     page.dataset.exampleGridBound = 'true';
 
-    const cards = Array.from(page.querySelectorAll('[data-example-card]'));
+    const cards = Array.from(
+        page.querySelectorAll('[data-example-card]')
+    );
 
     cards.forEach((card, index) => {
         window.setTimeout(() => {
@@ -153,38 +192,96 @@ function initializeExampleGrid() {
 }
 
 function initializeExampleDashboard() {
-    const page = document.querySelector('[data-example-dashboard]');
+    const page = document.querySelector(
+        '[data-example-dashboard]'
+    );
 
-    if (!page || page.dataset.exampleDashboardBound === 'true') {
+    if (
+        !page ||
+        page.dataset.exampleDashboardBound === 'true'
+    ) {
         return;
     }
 
     page.dataset.exampleDashboardBound = 'true';
 
-    const storageKey = 'example-dashboard-state';
-    const navButtons = Array.from(page.querySelectorAll('[data-dashboard-target]'));
-    const sections = Array.from(page.querySelectorAll('[data-dashboard-section]'));
-    const sectionTitle = page.querySelector('[data-dashboard-section-title]');
-    const drawer = page.querySelector('[data-dashboard-drawer]');
-    const drawerCloseButtons = Array.from(page.querySelectorAll('[data-dashboard-drawer-close]'));
-    const drawerTitle = page.querySelector('[data-dashboard-drawer-title]');
-    const drawerHeading = page.querySelector('[data-dashboard-drawer-heading]');
-    const drawerSections = Array.from(page.querySelectorAll('[data-dashboard-drawer-section]'));
-    const accountForm = page.querySelector('[data-dashboard-form="account"]');
-    const settingsForm = page.querySelector('[data-dashboard-form="settings"]');
-    const popup = page.querySelector('[data-dashboard-popup]');
-    const popupTitle = page.querySelector('[data-dashboard-popup-title]');
-    const popupMessage = page.querySelector('[data-dashboard-popup-message]');
-    const popupClose = page.querySelector('[data-dashboard-popup-close]');
+    const storageKey =
+        'example-dashboard-state';
+
+    const navButtons = Array.from(
+        page.querySelectorAll(
+            '[data-dashboard-target]'
+        )
+    );
+
+    const sections = Array.from(
+        page.querySelectorAll(
+            '[data-dashboard-section]'
+        )
+    );
+
+    const sectionTitle = page.querySelector(
+        '[data-dashboard-section-title]'
+    );
+
+    const drawer = page.querySelector(
+        '[data-dashboard-drawer]'
+    );
+
+    const drawerCloseButtons = Array.from(
+        page.querySelectorAll(
+            '[data-dashboard-drawer-close]'
+        )
+    );
+
+    const drawerTitle = page.querySelector(
+        '[data-dashboard-drawer-title]'
+    );
+
+    const drawerHeading = page.querySelector(
+        '[data-dashboard-drawer-heading]'
+    );
+
+    const drawerSections = Array.from(
+        page.querySelectorAll(
+            '[data-dashboard-drawer-section]'
+        )
+    );
+
+    const accountForm = page.querySelector(
+        '[data-dashboard-form="account"]'
+    );
+
+    const settingsForm = page.querySelector(
+        '[data-dashboard-form="settings"]'
+    );
+
+    const popup = page.querySelector(
+        '[data-dashboard-popup]'
+    );
+
+    const popupTitle = page.querySelector(
+        '[data-dashboard-popup-title]'
+    );
+
+    const popupMessage = page.querySelector(
+        '[data-dashboard-popup-message]'
+    );
+
+    const popupClose = page.querySelector(
+        '[data-dashboard-popup-close]'
+    );
 
     const defaultState = {
         activeSection: 'cars',
+
         account: {
             name: 'Alicia Morel',
             company: 'Nord Mobility',
             phone: '06 12 34 56 78',
             email: 'alicia.morel@example.com',
         },
+
         settings: {
             theme: 'standard',
             density: 'comfortable',
@@ -197,21 +294,71 @@ function initializeExampleDashboard() {
             title: 'Gestion des voitures',
             sectionLabel: 'Gestion des voitures',
             actionLabel: 'Ajouter une voiture',
+
             stats: [
-                { label: 'Flotte', value: '48', note: 'Véhicules disponibles' },
-                { label: 'Réparations', value: '7', note: 'Dossiers à suivre' },
-                { label: 'Paiements', value: '3', note: 'Relances aujourd\'hui' },
-                { label: 'Loueurs', value: '19', note: 'Clients actifs' },
+                {
+                    label: 'Flotte',
+                    value: '48',
+                    note: 'Véhicules disponibles',
+                },
+                {
+                    label: 'Réparations',
+                    value: '7',
+                    note: 'Dossiers à suivre',
+                },
+                {
+                    label: 'Paiements',
+                    value: '3',
+                    note: 'Relances aujourd’hui',
+                },
+                {
+                    label: 'Loueurs',
+                    value: '19',
+                    note: 'Clients actifs',
+                },
             ],
+
             cards: [
-                { label: 'En location', title: 'Renault Clio', subtitle: 'Retour 14:30', text: 'Citadine idéale pour les trajets courts.' },
-                { label: 'Révision', title: 'Peugeot 208', subtitle: 'Demain', text: 'Préparer le véhicule avant la remise en service.' },
-                { label: 'Retard client', title: 'Tesla Model 3', subtitle: '19:00', text: 'Relance prévue par téléphone.' },
-                { label: 'Disponible', title: 'Citroën C3', subtitle: 'Réservoir plein', text: 'Prête pour une location de courte durée.' },
-                { label: 'Nettoyage', title: 'Volkswagen Golf', subtitle: 'Après-midi', text: 'Contrôle de propreté avant la remise.' },
-                { label: 'Réservation confirmée', title: 'Toyota Yaris', subtitle: 'Vendredi', text: 'Dossier validé par le client.' },
+                {
+                    label: 'En location',
+                    title: 'Renault Clio',
+                    subtitle: 'Retour 14:30',
+                    text: 'Citadine idéale pour les trajets courts.',
+                },
+                {
+                    label: 'Révision',
+                    title: 'Peugeot 208',
+                    subtitle: 'Demain',
+                    text: 'Préparer le véhicule avant la remise en service.',
+                },
+                {
+                    label: 'Retard client',
+                    title: 'Tesla Model 3',
+                    subtitle: '19:00',
+                    text: 'Relance prévue par téléphone.',
+                },
+                {
+                    label: 'Disponible',
+                    title: 'Citroën C3',
+                    subtitle: 'Réservoir plein',
+                    text: 'Prête pour une location de courte durée.',
+                },
+                {
+                    label: 'Nettoyage',
+                    title: 'Volkswagen Golf',
+                    subtitle: 'Après-midi',
+                    text: 'Contrôle de propreté avant la remise.',
+                },
+                {
+                    label: 'Réservation confirmée',
+                    title: 'Toyota Yaris',
+                    subtitle: 'Vendredi',
+                    text: 'Dossier validé par le client.',
+                },
             ],
+
             asideTitle: 'Actions rapides',
+
             asideItems: [
                 'Préparer l’état des lieux du véhicule le plus demandé.',
                 'Confirmer les deux réservations premium de l’après-midi.',
@@ -219,25 +366,76 @@ function initializeExampleDashboard() {
                 'Envoyer la facture du dossier Martin.',
             ],
         },
+
         renters: {
             title: 'Gestion des loueurs',
             sectionLabel: 'Gestion des loueurs',
             actionLabel: 'Ajouter un loueur',
+
             stats: [
-                { label: 'Loueurs', value: '18', note: 'Clients professionnels' },
-                { label: 'Nouveaux', value: '4', note: 'Contrats signés cette semaine' },
-                { label: 'Caution', value: '12', note: 'Dossiers à vérifier' },
-                { label: 'Renouvellement', value: '5', note: 'Comptes à relancer' },
+                {
+                    label: 'Loueurs',
+                    value: '18',
+                    note: 'Clients professionnels',
+                },
+                {
+                    label: 'Nouveaux',
+                    value: '4',
+                    note: 'Contrats signés cette semaine',
+                },
+                {
+                    label: 'Caution',
+                    value: '12',
+                    note: 'Dossiers à vérifier',
+                },
+                {
+                    label: 'Renouvellement',
+                    value: '5',
+                    note: 'Comptes à relancer',
+                },
             ],
+
             cards: [
-                { label: 'Actif', title: 'Claire Martin', subtitle: 'Atelier Nord', text: 'Dernier véhicule loué : Peugeot 208.' },
-                { label: 'Actif', title: 'Julien Morel', subtitle: 'Studio Delta', text: 'Dernier véhicule loué : Renault Clio.' },
-                { label: 'En attente', title: 'Sophie Bernard', subtitle: 'Maison Rivage', text: 'Dernier véhicule loué : Tesla Model 3.' },
-                { label: 'Relance', title: 'Karim Diallo', subtitle: 'Delta Transport', text: 'Dernier véhicule loué : Berlingo.' },
-                { label: 'Nouveau', title: 'Nadia Petit', subtitle: 'Agence Ouest', text: 'Compte créé il y a deux jours.' },
-                { label: 'Vérification', title: 'Lucas Renard', subtitle: 'Freelance Pro', text: 'Pièce d’identité à contrôler.' },
+                {
+                    label: 'Actif',
+                    title: 'Claire Martin',
+                    subtitle: 'Atelier Nord',
+                    text: 'Dernier véhicule loué : Peugeot 208.',
+                },
+                {
+                    label: 'Actif',
+                    title: 'Julien Morel',
+                    subtitle: 'Studio Delta',
+                    text: 'Dernier véhicule loué : Renault Clio.',
+                },
+                {
+                    label: 'En attente',
+                    title: 'Sophie Bernard',
+                    subtitle: 'Maison Rivage',
+                    text: 'Dernier véhicule loué : Tesla Model 3.',
+                },
+                {
+                    label: 'Relance',
+                    title: 'Karim Diallo',
+                    subtitle: 'Delta Transport',
+                    text: 'Dernier véhicule loué : Berlingo.',
+                },
+                {
+                    label: 'Nouveau',
+                    title: 'Nadia Petit',
+                    subtitle: 'Agence Ouest',
+                    text: 'Compte créé il y a deux jours.',
+                },
+                {
+                    label: 'Vérification',
+                    title: 'Lucas Renard',
+                    subtitle: 'Freelance Pro',
+                    text: 'Pièce d’identité à contrôler.',
+                },
             ],
+
             asideTitle: 'Documents à suivre',
+
             asideItems: [
                 'Contrat signé à numériser pour le dossier Bernard.',
                 'Permis de conduire à revérifier pour trois loueurs.',
@@ -245,25 +443,76 @@ function initializeExampleDashboard() {
                 'Pièce d’identité à demander pour un nouveau compte.',
             ],
         },
+
         payments: {
             title: 'Gestion des paiements',
             sectionLabel: 'Gestion des paiements',
             actionLabel: 'Ajouter un paiement',
+
             stats: [
-                { label: 'Encaissements', value: '12', note: 'Validés aujourd’hui' },
-                { label: 'À relancer', value: '3', note: 'Factures en attente' },
-                { label: 'Moyenne', value: '84€', note: 'Montant par transaction' },
-                { label: 'Solde', value: 'OK', note: 'Situation à jour' },
+                {
+                    label: 'Encaissements',
+                    value: '12',
+                    note: 'Validés aujourd’hui',
+                },
+                {
+                    label: 'À relancer',
+                    value: '3',
+                    note: 'Factures en attente',
+                },
+                {
+                    label: 'Moyenne',
+                    value: '84€',
+                    note: 'Montant par transaction',
+                },
+                {
+                    label: 'Solde',
+                    value: 'OK',
+                    note: 'Situation à jour',
+                },
             ],
+
             cards: [
-                { label: 'Payé', title: 'FAC-2048', subtitle: 'Atelier Nord', text: '148 € - location standard réglée.' },
-                { label: 'À relancer', title: 'FAC-2049', subtitle: 'Studio Delta', text: '76 € - rappel envoyé cet après-midi.' },
-                { label: 'En attente', title: 'FAC-2050', subtitle: 'Maison Rivage', text: '214 € - validation bancaire en cours.' },
-                { label: 'Payé', title: 'FAC-2051', subtitle: 'Delta Transport', text: '98 € - reçu envoyé automatiquement.' },
-                { label: 'Acompte', title: 'FAC-2052', subtitle: 'Nord Mobility', text: '120 € - acompte partiel enregistré.' },
-                { label: 'Contrôle', title: 'FAC-2053', subtitle: 'Atelier Sud', text: '55 € - pièce manquante à vérifier.' },
+                {
+                    label: 'Payé',
+                    title: 'FAC-2048',
+                    subtitle: 'Atelier Nord',
+                    text: '148 € - location standard réglée.',
+                },
+                {
+                    label: 'À relancer',
+                    title: 'FAC-2049',
+                    subtitle: 'Studio Delta',
+                    text: '76 € - rappel envoyé cet après-midi.',
+                },
+                {
+                    label: 'En attente',
+                    title: 'FAC-2050',
+                    subtitle: 'Maison Rivage',
+                    text: '214 € - validation bancaire en cours.',
+                },
+                {
+                    label: 'Payé',
+                    title: 'FAC-2051',
+                    subtitle: 'Delta Transport',
+                    text: '98 € - reçu envoyé automatiquement.',
+                },
+                {
+                    label: 'Acompte',
+                    title: 'FAC-2052',
+                    subtitle: 'Nord Mobility',
+                    text: '120 € - acompte partiel enregistré.',
+                },
+                {
+                    label: 'Contrôle',
+                    title: 'FAC-2053',
+                    subtitle: 'Atelier Sud',
+                    text: '55 € - pièce manquante à vérifier.',
+                },
             ],
+
             asideTitle: 'Rappels de caisse',
+
             asideItems: [
                 'Envoyer le reçu du dossier FAC-2049.',
                 'Vérifier la caution du contrat premium.',
@@ -271,25 +520,76 @@ function initializeExampleDashboard() {
                 'Préparer les écritures du prochain point comptable.',
             ],
         },
+
         repairs: {
             title: 'Gestion des réparations',
             sectionLabel: 'Gestion des réparations',
             actionLabel: 'Ajouter une réparation',
+
             stats: [
-                { label: 'Ateliers', value: '4', note: 'Partenaires actifs' },
-                { label: 'En cours', value: '6', note: 'Réparations ouvertes' },
-                { label: 'Prêts', value: '2', note: 'Véhicules à récupérer' },
-                { label: 'Planifier', value: '5', note: 'Contrôles à venir' },
+                {
+                    label: 'Ateliers',
+                    value: '4',
+                    note: 'Partenaires actifs',
+                },
+                {
+                    label: 'En cours',
+                    value: '6',
+                    note: 'Réparations ouvertes',
+                },
+                {
+                    label: 'Prêts',
+                    value: '2',
+                    note: 'Véhicules à récupérer',
+                },
+                {
+                    label: 'Planifier',
+                    value: '5',
+                    note: 'Contrôles à venir',
+                },
             ],
+
             cards: [
-                { label: 'En cours', title: 'Peugeot 208', subtitle: 'Garage Sud', text: 'Estimation 320 € - carrosserie.' },
-                { label: 'Prêt demain', title: 'Citroën Berlingo', subtitle: 'Nord Réparations', text: 'Estimation 180 € - freinage.' },
-                { label: 'Devis reçu', title: 'Renault Clio', subtitle: 'City Garage', text: 'Estimation 540 € - contrôle moteur.' },
-                { label: 'Diagnostic', title: 'Tesla Model 3', subtitle: 'Electro Service', text: 'Estimation 210 € - électronique.' },
-                { label: 'Prévu', title: 'Dacia Sandero', subtitle: 'Garage Express', text: 'Révision simple programmée.' },
-                { label: 'Suivi', title: 'Toyota Yaris', subtitle: 'Atelier Horizon', text: 'Petite intervention à confirmer.' },
+                {
+                    label: 'En cours',
+                    title: 'Peugeot 208',
+                    subtitle: 'Garage Sud',
+                    text: 'Estimation 320 € - carrosserie.',
+                },
+                {
+                    label: 'Prêt demain',
+                    title: 'Citroën Berlingo',
+                    subtitle: 'Nord Réparations',
+                    text: 'Estimation 180 € - freinage.',
+                },
+                {
+                    label: 'Devis reçu',
+                    title: 'Renault Clio',
+                    subtitle: 'City Garage',
+                    text: 'Estimation 540 € - contrôle moteur.',
+                },
+                {
+                    label: 'Diagnostic',
+                    title: 'Tesla Model 3',
+                    subtitle: 'Electro Service',
+                    text: 'Estimation 210 € - électronique.',
+                },
+                {
+                    label: 'Prévu',
+                    title: 'Dacia Sandero',
+                    subtitle: 'Garage Express',
+                    text: 'Révision simple programmée.',
+                },
+                {
+                    label: 'Suivi',
+                    title: 'Toyota Yaris',
+                    subtitle: 'Atelier Horizon',
+                    text: 'Petite intervention à confirmer.',
+                },
             ],
+
             asideTitle: 'Planification atelier',
+
             asideItems: [
                 'Récupérer le dossier peinture de la Clio.',
                 'Valider le devis mécanique du Berlingo.',
@@ -301,26 +601,44 @@ function initializeExampleDashboard() {
 
     const readState = () => {
         try {
-            const raw = window.localStorage.getItem(storageKey);
+            const raw =
+                window.localStorage.getItem(storageKey);
 
             if (!raw) {
-                return JSON.parse(JSON.stringify(defaultState));
+                return JSON.parse(
+                    JSON.stringify(defaultState)
+                );
             }
 
             const parsed = JSON.parse(raw);
 
             return {
-                activeSection: parsed.activeSection ?? defaultState.activeSection,
-                account: { ...defaultState.account, ...(parsed.account ?? {}) },
-                settings: { ...defaultState.settings, ...(parsed.settings ?? {}) },
+                activeSection:
+                    parsed.activeSection ??
+                    defaultState.activeSection,
+
+                account: {
+                    ...defaultState.account,
+                    ...(parsed.account ?? {}),
+                },
+
+                settings: {
+                    ...defaultState.settings,
+                    ...(parsed.settings ?? {}),
+                },
             };
         } catch {
-            return JSON.parse(JSON.stringify(defaultState));
+            return JSON.parse(
+                JSON.stringify(defaultState)
+            );
         }
     };
 
     const saveState = () => {
-        window.localStorage.setItem(storageKey, JSON.stringify(state));
+        window.localStorage.setItem(
+            storageKey,
+            JSON.stringify(state)
+        );
     };
 
     let state = readState();
@@ -331,19 +649,26 @@ function initializeExampleDashboard() {
         }
 
         drawer.classList.remove('is-open');
+
         window.setTimeout(() => {
             drawer.hidden = true;
         }, 220);
     };
 
     const showPopup = (title, message) => {
-        if (!popup || !popupTitle || !popupMessage) {
+        if (
+            !popup ||
+            !popupTitle ||
+            !popupMessage
+        ) {
             return;
         }
 
         popupTitle.textContent = title;
         popupMessage.textContent = message;
+
         popup.hidden = false;
+
         window.requestAnimationFrame(() => {
             popup.classList.add('is-visible');
         });
@@ -355,33 +680,72 @@ function initializeExampleDashboard() {
         }
 
         popup.classList.remove('is-visible');
+
         window.setTimeout(() => {
             popup.hidden = true;
         }, 220);
     };
 
     const applyPreferences = () => {
-        page.classList.toggle('example-dashboard-page--contrast', state.settings.theme === 'contrast');
-        page.classList.toggle('example-dashboard-page--soft', state.settings.theme === 'soft');
-        page.classList.toggle('example-dashboard-page--compact', state.settings.density === 'compact');
-        page.classList.toggle('example-dashboard-page--reduced', state.settings.animation === 'reduced');
+        page.classList.toggle(
+            'example-dashboard-page--contrast',
+            state.settings.theme === 'contrast'
+        );
+
+        page.classList.toggle(
+            'example-dashboard-page--soft',
+            state.settings.theme === 'soft'
+        );
+
+        page.classList.toggle(
+            'example-dashboard-page--compact',
+            state.settings.density === 'compact'
+        );
+
+        page.classList.toggle(
+            'example-dashboard-page--reduced',
+            state.settings.animation === 'reduced'
+        );
 
         if (accountForm) {
-            accountForm.querySelector('[name="name"]').value = state.account.name;
-            accountForm.querySelector('[name="company"]').value = state.account.company;
-            accountForm.querySelector('[name="phone"]').value = state.account.phone;
-            accountForm.querySelector('[name="email"]').value = state.account.email;
+            accountForm.querySelector(
+                '[name="name"]'
+            ).value = state.account.name;
+
+            accountForm.querySelector(
+                '[name="company"]'
+            ).value = state.account.company;
+
+            accountForm.querySelector(
+                '[name="phone"]'
+            ).value = state.account.phone;
+
+            accountForm.querySelector(
+                '[name="email"]'
+            ).value = state.account.email;
         }
 
         if (settingsForm) {
-            settingsForm.querySelector('[name="theme"]').value = state.settings.theme;
-            settingsForm.querySelector('[name="density"]').value = state.settings.density;
-            settingsForm.querySelector('[name="animation"]').value = state.settings.animation;
+            settingsForm.querySelector(
+                '[name="theme"]'
+            ).value = state.settings.theme;
+
+            settingsForm.querySelector(
+                '[name="density"]'
+            ).value = state.settings.density;
+
+            settingsForm.querySelector(
+                '[name="animation"]'
+            ).value = state.settings.animation;
         }
     };
 
     const revealSectionItems = (section) => {
-        const items = Array.from(section.querySelectorAll('[data-dashboard-animate]'));
+        const items = Array.from(
+            section.querySelectorAll(
+                '[data-dashboard-animate]'
+            )
+        );
 
         items.forEach((item) => {
             item.classList.add('dashboard-reveal');
@@ -396,8 +760,15 @@ function initializeExampleDashboard() {
     };
 
     const renderSection = (name) => {
-        const data = dashboardData[name] ?? dashboardData.cars;
-        const section = sections.find((item) => item.dataset.dashboardSection === name) ?? sections[0];
+        const data =
+            dashboardData[name] ??
+            dashboardData.cars;
+
+        const section =
+            sections.find(
+                (item) =>
+                    item.dataset.dashboardSection === name
+            ) ?? sections[0];
 
         if (!section) {
             return;
@@ -409,56 +780,135 @@ function initializeExampleDashboard() {
 
         section.innerHTML = `
             <div class="row mb-4">
-                ${data.stats.map((stat) => `
-                    <div class="col-md-6 col-xl-3 mb-3" data-dashboard-animate>
-                        <article class="example-dashboard-metric">
-                            <p class="small text-uppercase font-weight-bold text-muted mb-1">${stat.label}</p>
-                            <p class="display-4 font-weight-bold mb-1">${stat.value}</p>
-                            <p class="mb-0 text-muted">${stat.note}</p>
-                        </article>
-                    </div>
-                `).join('')}
+                ${data.stats
+                    .map(
+                        (stat) => `
+                            <div
+                                class="col-md-6 col-xl-3 mb-3"
+                                data-dashboard-animate
+                            >
+                                <article class="example-dashboard-metric">
+                                    <p class="small text-uppercase font-weight-bold text-muted mb-1">
+                                        ${stat.label}
+                                    </p>
+                                    <p class="display-4 font-weight-bold mb-1">
+                                        ${stat.value}
+                                    </p>
+                                    <p class="mb-0 text-muted">
+                                        ${stat.note}
+                                    </p>
+                                </article>
+                            </div>
+                        `
+                    )
+                    .join('')}
             </div>
 
             <div class="row">
-                <div class="col-xl-8 mb-4" data-dashboard-animate>
+                <div
+                    class="col-xl-8 mb-4"
+                    data-dashboard-animate
+                >
                     <article class="example-dashboard-card h-100">
                         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
                             <div>
-                                <p class="text-uppercase small font-weight-bold text-muted mb-2">${data.sectionLabel}</p>
-                                <h3 class="h4 font-weight-bold mb-0">${data.title}</h3>
+                                <p class="text-uppercase small font-weight-bold text-muted mb-2">
+                                    ${data.sectionLabel}
+                                </p>
+                                <h3 class="h4 font-weight-bold mb-0">
+                                    ${data.title}
+                                </h3>
                             </div>
-                            <button class="btn btn-dark mt-3 mt-md-0" type="button" data-dashboard-action="add-${name}">${data.actionLabel}</button>
+
+                            <button
+                                class="btn btn-dark mt-3 mt-md-0"
+                                type="button"
+                                data-dashboard-action="add-${name}"
+                            >
+                                ${data.actionLabel}
+                            </button>
                         </div>
 
                         <div class="row">
-                            ${data.cards.map((card, index) => `
-                                <div class="col-md-6 mb-4" data-dashboard-animate>
-                                    <article class="example-dashboard-item">
-                                        <div class="d-flex justify-content-between align-items-start mb-3">
-                                            <p class="text-uppercase small font-weight-bold text-muted mb-0">${card.label}</p>
-                                            <span class="badge badge-dark">#${index + 1}</span>
+                            ${data.cards
+                                .map(
+                                    (card, index) => `
+                                        <div
+                                            class="col-md-6 mb-4"
+                                            data-dashboard-animate
+                                        >
+                                            <article class="example-dashboard-item">
+                                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                                    <p class="text-uppercase small font-weight-bold text-muted mb-0">
+                                                        ${card.label}
+                                                    </p>
+                                                    <span class="badge badge-dark">
+                                                        #${index + 1}
+                                                    </span>
+                                                </div>
+
+                                                <h4 class="h5 font-weight-bold mb-2">
+                                                    ${card.title}
+                                                </h4>
+
+                                                <p class="mb-2 text-muted">
+                                                    ${card.subtitle}
+                                                </p>
+
+                                                <p class="mb-4">
+                                                    ${card.text}
+                                                </p>
+
+                                                <div class="d-flex flex-wrap gap-2">
+                                                    <button
+                                                        class="btn btn-outline-dark btn-sm"
+                                                        type="button"
+                                                        data-dashboard-action="view"
+                                                    >
+                                                        Voir
+                                                    </button>
+
+                                                    <button
+                                                        class="btn btn-outline-dark btn-sm"
+                                                        type="button"
+                                                        data-dashboard-action="edit"
+                                                    >
+                                                        Modifier
+                                                    </button>
+
+                                                    <button
+                                                        class="btn btn-outline-danger btn-sm"
+                                                        type="button"
+                                                        data-dashboard-action="delete"
+                                                    >
+                                                        Supprimer
+                                                    </button>
+                                                </div>
+                                            </article>
                                         </div>
-                                        <h4 class="h5 font-weight-bold mb-2">${card.title}</h4>
-                                        <p class="mb-2 text-muted">${card.subtitle}</p>
-                                        <p class="mb-4">${card.text}</p>
-                                        <div class="d-flex flex-wrap gap-2">
-                                            <button class="btn btn-outline-dark btn-sm" type="button" data-dashboard-action="view">Voir</button>
-                                            <button class="btn btn-outline-dark btn-sm" type="button" data-dashboard-action="edit">Modifier</button>
-                                            <button class="btn btn-outline-danger btn-sm" type="button" data-dashboard-action="delete">Supprimer</button>
-                                        </div>
-                                    </article>
-                                </div>
-                            `).join('')}
+                                    `
+                                )
+                                .join('')}
                         </div>
                     </article>
                 </div>
 
-                <div class="col-xl-4 mb-4" data-dashboard-animate>
+                <div
+                    class="col-xl-4 mb-4"
+                    data-dashboard-animate
+                >
                     <article class="example-dashboard-card h-100">
-                        <h3 class="h4 font-weight-bold mb-4">${data.asideTitle}</h3>
+                        <h3 class="h4 font-weight-bold mb-4">
+                            ${data.asideTitle}
+                        </h3>
+
                         <ul class="list-unstyled mb-0 example-dashboard-list">
-                            ${data.asideItems.map((item) => `<li>${item}</li>`).join('')}
+                            ${data.asideItems
+                                .map(
+                                    (item) =>
+                                        `<li>${item}</li>`
+                                )
+                                .join('')}
                         </ul>
                     </article>
                 </div>
@@ -469,34 +919,58 @@ function initializeExampleDashboard() {
     };
 
     const activateSection = (name) => {
-        const targetButton = navButtons.find((button) => button.dataset.dashboardTarget === name) ?? navButtons[0];
-        const targetSection = sections.find((section) => section.dataset.dashboardSection === name) ?? sections[0];
+        const targetButton =
+            navButtons.find(
+                (button) =>
+                    button.dataset.dashboardTarget === name
+            ) ?? navButtons[0];
+
+        const targetSection =
+            sections.find(
+                (section) =>
+                    section.dataset.dashboardSection === name
+            ) ?? sections[0];
 
         navButtons.forEach((button) => {
-            button.classList.toggle('active', button === targetButton);
+            button.classList.toggle(
+                'active',
+                button === targetButton
+            );
         });
 
         sections.forEach((section) => {
-            section.classList.toggle('is-active', section === targetSection);
+            section.classList.toggle(
+                'is-active',
+                section === targetSection
+            );
         });
 
-        state.activeSection = targetSection?.dataset.dashboardSection ?? defaultState.activeSection;
+        state.activeSection =
+            targetSection?.dataset.dashboardSection ??
+            defaultState.activeSection;
+
         saveState();
+
         renderSection(state.activeSection);
     };
 
     const setDrawerSection = (name) => {
         drawerSections.forEach((section) => {
-            section.classList.toggle('d-none', section.dataset.dashboardDrawerSection !== name);
+            section.classList.toggle(
+                'd-none',
+                section.dataset.dashboardDrawerSection !== name
+            );
         });
 
         if (drawerTitle && drawerHeading) {
             if (name === 'settings') {
                 drawerTitle.textContent = 'Paramètres';
-                drawerHeading.textContent = 'Préférences d’affichage';
+                drawerHeading.textContent =
+                    'Préférences d’affichage';
             } else {
                 drawerTitle.textContent = 'Mon compte';
-                drawerHeading.textContent = 'Informations de profil';
+                drawerHeading.textContent =
+                    'Informations de profil';
             }
         }
     };
@@ -507,7 +981,9 @@ function initializeExampleDashboard() {
         }
 
         setDrawerSection(name);
+
         drawer.hidden = false;
+
         window.requestAnimationFrame(() => {
             drawer.classList.add('is-open');
         });
@@ -515,18 +991,24 @@ function initializeExampleDashboard() {
 
     navButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            activateSection(button.dataset.dashboardTarget ?? defaultState.activeSection);
+            activateSection(
+                button.dataset.dashboardTarget ??
+                    defaultState.activeSection
+            );
         });
     });
 
     page.addEventListener('click', (event) => {
-        const button = event.target.closest('[data-dashboard-action]');
+        const button = event.target.closest(
+            '[data-dashboard-action]'
+        );
 
         if (!button || !page.contains(button)) {
             return;
         }
 
-        const action = button.dataset.dashboardAction;
+        const action =
+            button.dataset.dashboardAction;
 
         if (action === 'account') {
             openDrawer('account');
@@ -539,22 +1021,38 @@ function initializeExampleDashboard() {
         }
 
         if (action === 'logout') {
-            showPopup('Déconnexion', 'La déconnexion a été simulée avec succès.');
+            showPopup(
+                'Déconnexion',
+                'La déconnexion a été simulée avec succès.'
+            );
             return;
         }
 
-        if (action === 'view' || action === 'edit' || action === 'delete') {
-            showPopup('Action simulée', 'Cette action est bien prise en compte dans la démo.');
+        if (
+            action === 'view' ||
+            action === 'edit' ||
+            action === 'delete'
+        ) {
+            showPopup(
+                'Action simulée',
+                'Cette action est bien prise en compte dans la démo.'
+            );
             return;
         }
 
         if (action?.startsWith('add-')) {
-            showPopup('Ajout simulé', 'Le nouvel élément a été ajouté dans la démonstration.');
+            showPopup(
+                'Ajout simulé',
+                'Le nouvel élément a été ajouté dans la démonstration.'
+            );
         }
     });
 
     drawerCloseButtons.forEach((button) => {
-        button.addEventListener('click', hideDrawer);
+        button.addEventListener(
+            'click',
+            hideDrawer
+        );
     });
 
     drawer?.addEventListener('click', (event) => {
@@ -563,7 +1061,10 @@ function initializeExampleDashboard() {
         }
     });
 
-    popupClose?.addEventListener('click', hidePopup);
+    popupClose?.addEventListener(
+        'click',
+        hidePopup
+    );
 
     popup?.addEventListener('click', (event) => {
         if (event.target === popup) {
@@ -571,185 +1072,358 @@ function initializeExampleDashboard() {
         }
     });
 
-    accountForm?.addEventListener('submit', (event) => {
-        event.preventDefault();
+    accountForm?.addEventListener(
+        'submit',
+        (event) => {
+            event.preventDefault();
 
-        state.account = {
-            name: accountForm.querySelector('[name="name"]').value.trim(),
-            company: accountForm.querySelector('[name="company"]').value.trim(),
-            phone: accountForm.querySelector('[name="phone"]').value.trim(),
-            email: accountForm.querySelector('[name="email"]').value.trim(),
-        };
+            state.account = {
+                name: accountForm
+                    .querySelector('[name="name"]')
+                    .value
+                    .trim(),
 
-        saveState();
-        hideDrawer();
-        showPopup('Compte enregistré', 'Les informations du compte ont été enregistrées.');
-    });
+                company: accountForm
+                    .querySelector('[name="company"]')
+                    .value
+                    .trim(),
 
-    settingsForm?.addEventListener('submit', (event) => {
-        event.preventDefault();
+                phone: accountForm
+                    .querySelector('[name="phone"]')
+                    .value
+                    .trim(),
 
-        state.settings = {
-            theme: settingsForm.querySelector('[name="theme"]').value,
-            density: settingsForm.querySelector('[name="density"]').value,
-            animation: settingsForm.querySelector('[name="animation"]').value,
-        };
+                email: accountForm
+                    .querySelector('[name="email"]')
+                    .value
+                    .trim(),
+            };
 
-        saveState();
-        applyPreferences();
-        hideDrawer();
-        showPopup('Paramètres enregistrés', 'Les préférences d’affichage ont bien été prises en compte.');
-    });
+            saveState();
+
+            hideDrawer();
+
+            showPopup(
+                'Compte enregistré',
+                'Les informations du compte ont été enregistrées.'
+            );
+        }
+    );
+
+    settingsForm?.addEventListener(
+        'submit',
+        (event) => {
+            event.preventDefault();
+
+            state.settings = {
+                theme: settingsForm
+                    .querySelector('[name="theme"]')
+                    .value,
+
+                density: settingsForm
+                    .querySelector('[name="density"]')
+                    .value,
+
+                animation: settingsForm
+                    .querySelector('[name="animation"]')
+                    .value,
+            };
+
+            saveState();
+
+            applyPreferences();
+
+            hideDrawer();
+
+            showPopup(
+                'Paramètres enregistrés',
+                'Les préférences d’affichage ont bien été prises en compte.'
+            );
+        }
+    );
 
     applyPreferences();
+
     activateSection(state.activeSection);
 }
 
 function initializeExampleCinema() {
-    const page = document.querySelector('[data-example-cinema]');
+    const page = document.querySelector(
+        '[data-example-cinema]'
+    );
 
-    if (!page || page.dataset.exampleCinemaBound === 'true') {
+    if (
+        !page ||
+        page.dataset.exampleCinemaBound === 'true'
+    ) {
         return;
     }
 
     page.dataset.exampleCinemaBound = 'true';
 
-    const scenes = Array.from(page.querySelectorAll('[data-cinema-scene]'));
-    const links = Array.from(page.querySelectorAll('[data-cinema-link]'));
-    const nav = page.querySelector('[data-cinema-nav]');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const lockBody = window.matchMedia('(min-width: 992px)').matches;
-    let activeIndex = 0;
-    let scrollLock = false;
-    let transitionTimer = null;
+    const scenes = Array.from(
+        page.querySelectorAll('[data-cinema-scene]')
+    );
 
-    if (lockBody) {
-        document.body.classList.add('example-cinema-lock');
+    const links = Array.from(
+        page.querySelectorAll('[data-cinema-link]')
+    );
+
+    if (!scenes.length || !links.length) {
+        return;
     }
 
-    const syncState = (index) => {
-        activeIndex = Math.max(0, Math.min(index, scenes.length - 1));
+    let activeIndex = 0;
+    let isScrolling = false;
+    let animationFrame = null;
 
-        scenes.forEach((scene, sceneIndex) => {
-            const isActive = sceneIndex === activeIndex;
-            scene.classList.toggle('is-active', isActive);
-            scene.classList.remove('is-entering-from-top', 'is-entering-from-bottom', 'is-leaving-to-top', 'is-leaving-to-bottom');
-            scene.dataset.sceneState = isActive ? 'active' : sceneIndex < activeIndex ? 'past' : 'future';
-        });
+    const duration = 500;
+
+    const updateActiveLink = (index) => {
+        activeIndex = Math.max(
+            0,
+            Math.min(index, scenes.length - 1)
+        );
 
         links.forEach((link, linkIndex) => {
-            const isActive = linkIndex === activeIndex;
-            link.classList.toggle('is-active', isActive);
-            link.setAttribute('aria-current', isActive ? 'true' : 'false');
+            const isActive =
+                linkIndex === activeIndex;
+
+            link.classList.toggle(
+                'is-active',
+                isActive
+            );
+
+            link.setAttribute(
+                'aria-current',
+                isActive ? 'true' : 'false'
+            );
         });
+    };
 
-        if (nav) {
-            const activeLink = links[activeIndex];
+    const getScenePosition = (scene) => {
+        return (
+            window.scrollY +
+            scene.getBoundingClientRect().top
+        );
+    };
 
-            if (activeLink) {
-                window.requestAnimationFrame(() => {
-                    activeLink.scrollIntoView({
-                        block: 'center',
-                        inline: 'nearest',
-                        behavior: reducedMotion ? 'auto' : 'smooth',
-                    });
-                });
+    const animateScrollTo = (targetPosition) => {
+        if (animationFrame !== null) {
+            window.cancelAnimationFrame(
+                animationFrame
+            );
+        }
+
+        const startPosition = window.scrollY;
+        const distance =
+            targetPosition - startPosition;
+
+        const startTime = performance.now();
+
+        const easeInOut = (progress) => {
+            return progress < 0.5
+                ? 2 * progress * progress
+                : 1 -
+                    Math.pow(
+                        -2 * progress + 2,
+                        2
+                    ) /
+                        2;
+        };
+
+        const animate = (currentTime) => {
+            const elapsed =
+                currentTime - startTime;
+
+            const progress = Math.min(
+                elapsed / duration,
+                1
+            );
+
+            const easedProgress =
+                easeInOut(progress);
+
+            window.scrollTo(
+                0,
+                startPosition +
+                    distance *
+                        easedProgress
+            );
+
+            if (progress < 1) {
+                animationFrame =
+                    window.requestAnimationFrame(
+                        animate
+                    );
+
+                return;
             }
-        }
+
+            animationFrame = null;
+            isScrolling = false;
+
+            window.scrollTo(
+                0,
+                targetPosition
+            );
+        };
+
+        animationFrame =
+            window.requestAnimationFrame(
+                animate
+            );
     };
 
-    const goToScene = (index, direction = 1) => {
-        if (!scenes.length) {
-            return false;
+    const goToScene = (index) => {
+        if (isScrolling) {
+            return;
         }
 
-        const nextIndex = Math.max(0, Math.min(index, scenes.length - 1));
+        const targetIndex = Math.max(
+            0,
+            Math.min(
+                index,
+                scenes.length - 1
+            )
+        );
 
-        if (nextIndex === activeIndex) {
-            return false;
+        if (targetIndex === activeIndex) {
+            return;
         }
 
-        const currentScene = scenes[activeIndex];
-        const nextScene = scenes[nextIndex];
+        const targetScene =
+            scenes[targetIndex];
 
-        if (!currentScene || !nextScene) {
-            return false;
+        if (!targetScene) {
+            return;
         }
 
-        if (transitionTimer) {
-            window.clearTimeout(transitionTimer);
-        }
+        const targetPosition =
+            getScenePosition(targetScene);
 
-        scrollLock = true;
-        page.classList.add('is-transitioning');
+        isScrolling = true;
 
-        const leavingClass = direction > 0 ? 'is-leaving-to-top' : 'is-leaving-to-bottom';
-        const enteringClass = direction > 0 ? 'is-entering-from-bottom' : 'is-entering-from-top';
+        updateActiveLink(targetIndex);
 
-        scenes.forEach((scene) => {
-            scene.classList.remove('is-active', 'is-entering-from-top', 'is-entering-from-bottom', 'is-leaving-to-top', 'is-leaving-to-bottom');
-        });
-
-        currentScene.classList.add('is-active', leavingClass);
-        nextScene.classList.add('is-active', enteringClass);
-        currentScene.style.zIndex = '2';
-        nextScene.style.zIndex = '1';
-
-        links.forEach((link, linkIndex) => {
-            const isActive = linkIndex === nextIndex;
-            link.classList.toggle('is-active', isActive);
-            link.setAttribute('aria-current', isActive ? 'true' : 'false');
-        });
-
-        transitionTimer = window.setTimeout(() => {
-            page.classList.remove('is-transitioning');
-            syncState(nextIndex);
-            scrollLock = false;
-            transitionTimer = null;
-        }, reducedMotion ? 160 : 520);
-
-        return true;
+        animateScrollTo(
+            targetPosition
+        );
     };
+
+    window.addEventListener(
+        'wheel',
+        (event) => {
+            if (
+                Math.abs(event.deltaY) < 8
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+
+            if (isScrolling) {
+                return;
+            }
+
+            if (event.deltaY > 0) {
+                goToScene(
+                    activeIndex + 1
+                );
+            } else {
+                goToScene(
+                    activeIndex - 1
+                );
+            }
+        },
+        {
+            passive: false,
+        }
+    );
 
     links.forEach((link, index) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            goToScene(index, index > activeIndex ? 1 : -1);
-        });
+        link.addEventListener(
+            'click',
+            (event) => {
+                event.preventDefault();
+
+                goToScene(index);
+            }
+        );
     });
 
-    window.addEventListener('wheel', (event) => {
-        if (scrollLock || !scenes.length) {
-            return;
+    const initialPosition =
+        window.scrollY;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    scenes.forEach((scene, index) => {
+        const distance = Math.abs(
+            getScenePosition(scene) -
+                initialPosition
+        );
+
+        if (
+            distance <
+            closestDistance
+        ) {
+            closestDistance = distance;
+            closestIndex = index;
         }
+    });
 
-        if (Math.abs(event.deltaY) < 8) {
-            return;
-        }
-
-        event.preventDefault();
-
-        const moved = event.deltaY > 0
-            ? goToScene(activeIndex + 1, 1)
-            : goToScene(activeIndex - 1, -1);
-
-        if (!moved) {
-            return;
-        }
-
-        scrollLock = true;
-    }, { passive: false });
-
-    syncState(0);
+    updateActiveLink(
+        closestIndex
+    );
 }
 
-document.addEventListener('DOMContentLoaded', initializeHomePageInteractions);
-document.addEventListener('turbo:load', initializeHomePageInteractions);
-document.addEventListener('DOMContentLoaded', restorePagePosition);
-document.addEventListener('turbo:load', restorePagePosition);
-document.addEventListener('DOMContentLoaded', initializeExampleGrid);
-document.addEventListener('turbo:load', initializeExampleGrid);
-document.addEventListener('DOMContentLoaded', initializeExampleDashboard);
-document.addEventListener('turbo:load', initializeExampleDashboard);
-document.addEventListener('DOMContentLoaded', initializeExampleCinema);
-document.addEventListener('turbo:load', initializeExampleCinema);
+document.addEventListener(
+    'DOMContentLoaded',
+    initializeHomePageInteractions
+);
+
+document.addEventListener(
+    'turbo:load',
+    initializeHomePageInteractions
+);
+
+document.addEventListener(
+    'DOMContentLoaded',
+    restorePagePosition
+);
+
+document.addEventListener(
+    'turbo:load',
+    restorePagePosition
+);
+
+document.addEventListener(
+    'DOMContentLoaded',
+    initializeExampleGrid
+);
+
+document.addEventListener(
+    'turbo:load',
+    initializeExampleGrid
+);
+
+document.addEventListener(
+    'DOMContentLoaded',
+    initializeExampleDashboard
+);
+
+document.addEventListener(
+    'turbo:load',
+    initializeExampleDashboard
+);
+
+document.addEventListener(
+    'DOMContentLoaded',
+    initializeExampleCinema
+);
+
+document.addEventListener(
+    'turbo:load',
+    initializeExampleCinema
+);
