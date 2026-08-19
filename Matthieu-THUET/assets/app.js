@@ -54,88 +54,88 @@ function initializeHomePageInteractions() {
         document.querySelectorAll('[data-home-nav-link]')
     );
 
-    const sectionLinks = navLinks.filter((link) =>
-        link.classList.contains('nav-link')
-    );
+    const navMenu = document.querySelector('#homeNavMenu');
+    const nav = document.querySelector('.home-nav');
+    const menuLinks = navMenu
+        ? Array.from(
+              navMenu.querySelectorAll(
+                  '[data-home-nav-link]'
+              )
+          )
+        : [];
 
-    const sections = sectionLinks
+    if (!navLinks.length) {
+        return;
+    }
+
+    const sections = navLinks
         .map((link) => {
-            const targetId = link.getAttribute('href');
-            const section = targetId
-                ? document.querySelector(targetId)
-                : null;
+            const selector = link.getAttribute('href');
 
-            return section
-                ? { link, section }
-                : null;
+            if (!selector || !selector.startsWith('#')) {
+                return null;
+            }
+
+            const section = document.querySelector(selector);
+
+            if (!section) {
+                return null;
+            }
+
+            const visibleLink =
+                menuLinks.find(
+                    (menuLink) =>
+                        menuLink.getAttribute('href') ===
+                        selector
+                ) ?? link;
+
+            return {
+                link: visibleLink,
+                section
+            };
         })
         .filter(Boolean);
 
-    const navMenu = document.querySelector('#homeNavMenu');
-
-    const setActiveNavLink = (activeLink) => {
-        sectionLinks.forEach((link) => {
+    const setActiveLink = (activeLink) => {
+        navLinks.forEach((link) => {
             const isActive = link === activeLink;
 
             link.classList.toggle('is-active', isActive);
-            link.setAttribute(
-                'aria-current',
-                isActive ? 'page' : 'false'
-            );
+
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
         });
     };
 
-    const updateActiveNavLink = () => {
+    const updateActiveSection = () => {
         if (!sections.length) {
             return;
         }
 
-        const navHeight = getHomeNavHeight();
-        const activationLine = window.scrollY + navHeight + 40;
-        let active = sections[0];
+        const screenCenter = window.innerHeight / 2;
+
+        let activeSection = sections[0];
+        let closestDistance = Infinity;
 
         sections.forEach((item) => {
-            const sectionTop =
-                window.scrollY +
-                item.section.getBoundingClientRect().top;
+            const rect = item.section.getBoundingClientRect();
+            const sectionCenter =
+                rect.top + rect.height / 2;
+            const distance = Math.abs(
+                sectionCenter - screenCenter
+            );
 
-            if (sectionTop <= activationLine) {
-                active = item;
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                activeSection = item;
             }
         });
 
-        setActiveNavLink(active.link);
+        setActiveLink(activeSection.link);
     };
-
-    if (sections.length) {
-        if (window.IntersectionObserver) {
-            const observer = new IntersectionObserver(
-                () => updateActiveNavLink(),
-                {
-                    root: null,
-                    threshold: [0, 0.1, 0.5],
-                }
-            );
-
-            sections.forEach(({ section }) => observer.observe(section));
-        }
-
-        let scrollFrame = null;
-
-        window.addEventListener('scroll', () => {
-            if (scrollFrame !== null) {
-                return;
-            }
-
-            scrollFrame = window.requestAnimationFrame(() => {
-                scrollFrame = null;
-                updateActiveNavLink();
-            });
-        }, { passive: true });
-
-        window.addEventListener('resize', updateActiveNavLink, { passive: true });
-        updateActiveNavLink();
-    }
 
     navLinks.forEach((link) => {
         if (link.dataset.homeNavBound === 'true') {
@@ -153,50 +153,58 @@ function initializeHomePageInteractions() {
 
             const target = document.querySelector(targetId);
 
-            if (!target) {
+            if (!target || !nav) {
                 return;
             }
 
             event.preventDefault();
 
-            const menuIsOpen =
+            setActiveLink(link);
+
+            const navHeight = nav.offsetHeight;
+
+            const targetTop =
+                window.scrollY +
+                target.getBoundingClientRect().top -
+                navHeight;
+
+            window.scrollTo({
+                top: targetTop,
+                behavior: 'smooth'
+            });
+
+            if (
                 navMenu &&
-                navMenu.classList.contains('show');
-
-            const performScroll = () => {
-                // On mobile, the menu must be fully closed before calculating
-                // the target position. Otherwise its height is still included
-                // in the calculation and the page stops between two sections.
-                window.requestAnimationFrame(() => {
-                    window.requestAnimationFrame(() => {
-                        scrollToElement(targetId, 'smooth');
-                    });
-                });
-
-                window.history.replaceState(null, '', targetId);
-
-                const matchingLink = sectionLinks.find(
-                    (sectionLink) =>
-                        sectionLink.getAttribute('href') === targetId
-                );
-
-                if (matchingLink) {
-                    setActiveNavLink(matchingLink);
-                }
-            };
-
-            if (menuIsOpen && window.jQuery) {
-                window.jQuery(navMenu).one(
-                    'hidden.bs.collapse',
-                    performScroll
-                );
+                navMenu.classList.contains('show') &&
+                window.jQuery
+            ) {
                 window.jQuery(navMenu).collapse('hide');
-                return;
             }
-
-            performScroll();
         });
     });
+
+    let ticking = false;
+
+    const handleScroll = () => {
+        if (ticking) {
+            return;
+        }
+
+        ticking = true;
+
+        window.requestAnimationFrame(() => {
+            updateActiveSection();
+            ticking = false;
+        });
+    };
+
+    window.addEventListener('scroll', handleScroll, {
+        passive: true
+    });
+
+    window.addEventListener('resize', updateActiveSection);
+
+    updateActiveSection();
 
     const toggleButtons = Array.from(
         document.querySelectorAll('[data-home-toggle]')
@@ -231,8 +239,7 @@ function initializeHomePageInteractions() {
             );
 
             if (isOpen) {
-                panel.style.maxHeight =
-                    `${panel.scrollHeight}px`;
+                panel.style.maxHeight = `${panel.scrollHeight}px`;
 
                 panel.classList.remove(
                     'home-expandable-panel-open'
@@ -254,8 +261,7 @@ function initializeHomePageInteractions() {
             panel.style.maxHeight = '0px';
 
             window.requestAnimationFrame(() => {
-                panel.style.maxHeight =
-                    `${panel.scrollHeight}px`;
+                panel.style.maxHeight = `${panel.scrollHeight}px`;
 
                 panel.classList.add(
                     'home-expandable-panel-open'
@@ -268,7 +274,6 @@ function initializeHomePageInteractions() {
         });
     });
 }
-
 function initializeExampleGrid() {
     const page = document.querySelector(
         '[data-example-grid-page]'

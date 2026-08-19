@@ -75,6 +75,14 @@ body::-webkit-scrollbar-thumb,
     margin: 0 0.75rem;
 }
 
+.home-nav-link.is-active,
+.home-nav-link[aria-current="page"] {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
+}
+
 .home-nav-toggler {
     border: 1px solid rgba(255, 255, 255, 0.4);
     padding: 0.45rem 0.55rem;
