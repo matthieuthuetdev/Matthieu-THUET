@@ -1,28 +1,33 @@
 import './stimulus_bootstrap.js';
 import './styles/app.css';
 
-function scrollToElement(selector) {
+function getHomeNavHeight() {
+    const nav = document.querySelector('.home-nav');
+
+    return nav ? nav.offsetHeight : 0;
+}
+
+function scrollToElement(selector, behavior = 'auto') {
     if (!selector || !selector.startsWith('#')) {
         return;
     }
 
     const target = document.querySelector(selector);
-    const nav = document.querySelector('.home-nav');
 
-    if (!target || !nav) {
+    if (!target) {
         return;
     }
 
     window.requestAnimationFrame(() => {
-        const navHeight = nav.offsetHeight;
+        const navHeight = getHomeNavHeight();
         const targetTop =
             window.scrollY +
             target.getBoundingClientRect().top -
             navHeight;
 
         window.scrollTo({
-            top: targetTop,
-            behavior: 'auto',
+            top: Math.max(0, targetTop),
+            behavior,
         });
     });
 }
@@ -49,7 +54,88 @@ function initializeHomePageInteractions() {
         document.querySelectorAll('[data-home-nav-link]')
     );
 
+    const sectionLinks = navLinks.filter((link) =>
+        link.classList.contains('nav-link')
+    );
+
+    const sections = sectionLinks
+        .map((link) => {
+            const targetId = link.getAttribute('href');
+            const section = targetId
+                ? document.querySelector(targetId)
+                : null;
+
+            return section
+                ? { link, section }
+                : null;
+        })
+        .filter(Boolean);
+
     const navMenu = document.querySelector('#homeNavMenu');
+
+    const setActiveNavLink = (activeLink) => {
+        sectionLinks.forEach((link) => {
+            const isActive = link === activeLink;
+
+            link.classList.toggle('is-active', isActive);
+            link.setAttribute(
+                'aria-current',
+                isActive ? 'page' : 'false'
+            );
+        });
+    };
+
+    const updateActiveNavLink = () => {
+        if (!sections.length) {
+            return;
+        }
+
+        const navHeight = getHomeNavHeight();
+        const activationLine = window.scrollY + navHeight + 40;
+        let active = sections[0];
+
+        sections.forEach((item) => {
+            const sectionTop =
+                window.scrollY +
+                item.section.getBoundingClientRect().top;
+
+            if (sectionTop <= activationLine) {
+                active = item;
+            }
+        });
+
+        setActiveNavLink(active.link);
+    };
+
+    if (sections.length) {
+        if (window.IntersectionObserver) {
+            const observer = new IntersectionObserver(
+                () => updateActiveNavLink(),
+                {
+                    root: null,
+                    threshold: [0, 0.1, 0.5],
+                }
+            );
+
+            sections.forEach(({ section }) => observer.observe(section));
+        }
+
+        let scrollFrame = null;
+
+        window.addEventListener('scroll', () => {
+            if (scrollFrame !== null) {
+                return;
+            }
+
+            scrollFrame = window.requestAnimationFrame(() => {
+                scrollFrame = null;
+                updateActiveNavLink();
+            });
+        }, { passive: true });
+
+        window.addEventListener('resize', updateActiveNavLink, { passive: true });
+        updateActiveNavLink();
+    }
 
     navLinks.forEach((link) => {
         if (link.dataset.homeNavBound === 'true') {
@@ -66,32 +152,49 @@ function initializeHomePageInteractions() {
             }
 
             const target = document.querySelector(targetId);
-            const nav = document.querySelector('.home-nav');
 
-            if (!target || !nav) {
+            if (!target) {
                 return;
             }
 
             event.preventDefault();
 
-            const navHeight = nav.offsetHeight;
-
-            const targetTop =
-                window.scrollY +
-                target.getBoundingClientRect().top -
-                navHeight;
-
-            window.scrollTo({
-                top: targetTop,
-                behavior: 'smooth',
-            });
-
-            if (
+            const menuIsOpen =
                 navMenu &&
-                navMenu.classList.contains('show')
-            ) {
+                navMenu.classList.contains('show');
+
+            const performScroll = () => {
+                // On mobile, the menu must be fully closed before calculating
+                // the target position. Otherwise its height is still included
+                // in the calculation and the page stops between two sections.
+                window.requestAnimationFrame(() => {
+                    window.requestAnimationFrame(() => {
+                        scrollToElement(targetId, 'smooth');
+                    });
+                });
+
+                window.history.replaceState(null, '', targetId);
+
+                const matchingLink = sectionLinks.find(
+                    (sectionLink) =>
+                        sectionLink.getAttribute('href') === targetId
+                );
+
+                if (matchingLink) {
+                    setActiveNavLink(matchingLink);
+                }
+            };
+
+            if (menuIsOpen && window.jQuery) {
+                window.jQuery(navMenu).one(
+                    'hidden.bs.collapse',
+                    performScroll
+                );
                 window.jQuery(navMenu).collapse('hide');
+                return;
             }
+
+            performScroll();
         });
     });
 
