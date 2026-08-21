@@ -176,6 +176,7 @@
                                     <button
                                         class="btn btn-light"
                                         type="button"
+                                        data-cinema-action="reserve"
                                     >
                                         Réserver
                                     </button>
@@ -196,6 +197,16 @@
 
     </div>
 
+
 </main>
+
+<div class="example-dashboard-popup" data-cinema-popup hidden>
+    <div class="example-dashboard-popup-card">
+        <p class="text-uppercase small font-weight-bold text-danger mb-2">Confirmation</p>
+        <h3 class="h2 font-weight-bold mb-3" data-cinema-popup-title>Action simulée</h3>
+        <p class="mb-4" data-cinema-popup-message>Cette action est bien prise en compte dans la démo.</p>
+        <button class="btn btn-dark" type="button" data-cinema-popup-close>OK</button>
+    </div>
+</div>
 
 {% endblock %}

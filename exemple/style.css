@@ -40,8 +40,8 @@ a {
 
 .home-nav-link.is-active:hover,
 .home-nav-link.is-active:focus {
-    background: #ffffff;
-    color: #08111f;
+    background: #ffffff !important;
+    color: #08111f !important;
 }
 
 .page-shell {

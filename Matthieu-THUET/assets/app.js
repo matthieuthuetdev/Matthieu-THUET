@@ -392,9 +392,26 @@ function initializeExampleDashboard() {
 
         settings: {
             theme: 'standard',
-            density: 'comfortable',
-            animation: 'smooth',
+            display: 'standard',
+            animation: 'yes',
         },
+    };
+
+    const normalizeSettings = (settings = {}) => {
+        return {
+            theme:
+                settings.theme === 'contrast'
+                    ? 'contrast'
+                    : 'standard',
+            display:
+                settings.display === 'simplified'
+                    ? 'simplified'
+                    : 'standard',
+            animation:
+                settings.animation === 'no'
+                    ? 'no'
+                    : 'yes',
+        };
     };
 
     const dashboardData = {
@@ -730,10 +747,9 @@ function initializeExampleDashboard() {
                     ...(parsed.account ?? {}),
                 },
 
-                settings: {
-                    ...defaultState.settings,
-                    ...(parsed.settings ?? {}),
-                },
+                settings: normalizeSettings(
+                    parsed.settings ?? {}
+                ),
             };
         } catch {
             return JSON.parse(
@@ -801,18 +817,13 @@ function initializeExampleDashboard() {
         );
 
         page.classList.toggle(
-            'example-dashboard-page--soft',
-            state.settings.theme === 'soft'
+            'example-dashboard-page--simplified',
+            state.settings.display === 'simplified'
         );
 
         page.classList.toggle(
-            'example-dashboard-page--compact',
-            state.settings.density === 'compact'
-        );
-
-        page.classList.toggle(
-            'example-dashboard-page--reduced',
-            state.settings.animation === 'reduced'
+            'example-dashboard-page--no-animation',
+            state.settings.animation === 'no'
         );
 
         if (accountForm) {
@@ -834,18 +845,32 @@ function initializeExampleDashboard() {
         }
 
         if (settingsForm) {
-            settingsForm.querySelector(
+            const themeInput = settingsForm.querySelector(
                 '[name="theme"]'
-            ).value = state.settings.theme;
+            );
+            const displayInput = settingsForm.querySelector(
+                '[name="display"]'
+            );
+            const animationInput =
+                settingsForm.querySelector(
+                    '[name="animation"]'
+                );
 
-            settingsForm.querySelector(
-                '[name="density"]'
-            ).value = state.settings.density;
+            if (themeInput) {
+                themeInput.value = state.settings.theme;
+            }
 
-            settingsForm.querySelector(
-                '[name="animation"]'
-            ).value = state.settings.animation;
+            if (displayInput) {
+                displayInput.value = state.settings.display;
+            }
+
+            if (animationInput) {
+                animationInput.value =
+                    state.settings.animation;
+            }
         }
+
+        renderSection(state.activeSection);
     };
 
     const revealSectionItems = (section) => {
@@ -859,6 +884,14 @@ function initializeExampleDashboard() {
             item.classList.add('dashboard-reveal');
             item.classList.remove('is-visible');
         });
+
+        if (state.settings.animation === 'no') {
+            items.forEach((item) => {
+                item.classList.add('is-visible');
+            });
+
+            return;
+        }
 
         items.forEach((item, index) => {
             window.setTimeout(() => {
@@ -887,30 +920,36 @@ function initializeExampleDashboard() {
         }
 
         section.innerHTML = `
-            <div class="row mb-4">
-                ${data.stats
-                    .map(
-                        (stat) => `
-                            <div
-                                class="col-md-6 col-xl-3 mb-3"
-                                data-dashboard-animate
-                            >
-                                <article class="example-dashboard-metric">
-                                    <p class="small text-uppercase font-weight-bold text-muted mb-1">
-                                        ${stat.label}
-                                    </p>
-                                    <p class="display-4 font-weight-bold mb-1">
-                                        ${stat.value}
-                                    </p>
-                                    <p class="mb-0 text-muted">
-                                        ${stat.note}
-                                    </p>
-                                </article>
-                            </div>
-                        `
-                    )
-                    .join('')}
-            </div>
+            ${
+                state.settings.display === 'standard'
+                    ? `
+                        <div class="row mb-4">
+                            ${data.stats
+                                .map(
+                                    (stat) => `
+                                        <div
+                                            class="col-md-6 col-xl-3 mb-3"
+                                            data-dashboard-animate
+                                        >
+                                            <article class="example-dashboard-metric">
+                                                <p class="small text-uppercase font-weight-bold text-muted mb-1">
+                                                    ${stat.label}
+                                                </p>
+                                                <p class="display-4 font-weight-bold mb-1">
+                                                    ${stat.value}
+                                                </p>
+                                                <p class="mb-0 text-muted">
+                                                    ${stat.note}
+                                                </p>
+                                            </article>
+                                        </div>
+                                    `
+                                )
+                                .join('')}
+                        </div>
+                    `
+                    : ''
+            }
 
             <div class="row">
                 <div
@@ -1223,18 +1262,26 @@ function initializeExampleDashboard() {
         (event) => {
             event.preventDefault();
 
+            const themeValue =
+                settingsForm.querySelector(
+                    '[name="theme"]'
+                )?.value ?? defaultState.settings.theme;
+
+            const displayValue =
+                settingsForm.querySelector(
+                    '[name="display"]'
+                )?.value ?? defaultState.settings.display;
+
+            const animationValue =
+                settingsForm.querySelector(
+                    '[name="animation"]'
+                )?.value ??
+                defaultState.settings.animation;
+
             state.settings = {
-                theme: settingsForm
-                    .querySelector('[name="theme"]')
-                    .value,
-
-                density: settingsForm
-                    .querySelector('[name="density"]')
-                    .value,
-
-                animation: settingsForm
-                    .querySelector('[name="animation"]')
-                    .value,
+                theme: themeValue,
+                display: displayValue,
+                animation: animationValue,
             };
 
             saveState();
@@ -1275,6 +1322,22 @@ function initializeExampleCinema() {
 
     const links = Array.from(
         page.querySelectorAll('[data-cinema-link]')
+    );
+
+    const popup = document.querySelector(
+        '[data-cinema-popup]'
+    );
+
+    const popupTitle = document.querySelector(
+        '[data-cinema-popup-title]'
+    );
+
+    const popupMessage = document.querySelector(
+        '[data-cinema-popup-message]'
+    );
+
+    const popupClose = document.querySelector(
+        '[data-cinema-popup-close]'
     );
 
     if (!scenes.length || !links.length) {
@@ -1383,6 +1446,37 @@ function initializeExampleCinema() {
             );
     };
 
+    const showPopup = (title, message) => {
+        if (
+            !popup ||
+            !popupTitle ||
+            !popupMessage
+        ) {
+            return;
+        }
+
+        popupTitle.textContent = title;
+        popupMessage.textContent = message;
+
+        popup.hidden = false;
+
+        window.requestAnimationFrame(() => {
+            popup.classList.add('is-visible');
+        });
+    };
+
+    const hidePopup = () => {
+        if (!popup) {
+            return;
+        }
+
+        popup.classList.remove('is-visible');
+
+        window.setTimeout(() => {
+            popup.hidden = true;
+        }, 220);
+    };
+
     const goToScene = (index) => {
         if (isScrolling) {
             return;
@@ -1449,6 +1543,25 @@ function initializeExampleCinema() {
         }
     );
 
+    page.addEventListener('click', (event) => {
+        const button = event.target.closest(
+            '[data-cinema-action]'
+        );
+
+        if (!button || !page.contains(button)) {
+            return;
+        }
+
+        const action = button.dataset.cinemaAction;
+
+        if (action === 'reserve') {
+            showPopup(
+                'Action simulée',
+                'Cette action est bien prise en compte dans la démo.'
+            );
+        }
+    });
+
     links.forEach((link, index) => {
         link.addEventListener(
             'click',
@@ -1458,6 +1571,17 @@ function initializeExampleCinema() {
                 goToScene(index);
             }
         );
+    });
+
+    popupClose?.addEventListener(
+        'click',
+        hidePopup
+    );
+
+    popup?.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            hidePopup();
+        }
     });
 
     const initialPosition =
