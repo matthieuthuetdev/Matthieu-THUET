@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+﻿{% extends 'base.html.twig' %}
 
 {% block title %}Exemple 2 - Interface de gestion{% endblock %}
 
@@ -89,25 +89,24 @@
                     <div class="dashboard-drawer-panel d-none" data-dashboard-drawer-section="settings">
                         <form class="example-dashboard-form" data-dashboard-form="settings">
                             <div class="form-group">
-                                <label for="dashboardTheme">Affichage</label>
+                                <label for="dashboardTheme">Contraste</label>
                                 <select id="dashboardTheme" class="form-control" name="theme">
                                     <option value="standard">Standard</option>
-                                    <option value="contrast">Contraste renforcé</option>
-                                    <option value="soft">Lumière douce</option>
+                                    <option value="contrast">Renforcé</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="dashboardDensity">Densité</label>
-                                <select id="dashboardDensity" class="form-control" name="density">
-                                    <option value="comfortable">Confortable</option>
-                                    <option value="compact">Compacte</option>
+                                <label for="dashboardDisplay">Affichage</label>
+                                <select id="dashboardDisplay" class="form-control" name="display">
+                                    <option value="standard">Standard</option>
+                                    <option value="simplified">Simplifié</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="dashboardAnimation">Animations</label>
                                 <select id="dashboardAnimation" class="form-control" name="animation">
-                                    <option value="smooth">Douces</option>
-                                    <option value="reduced">Réduites</option>
+                                    <option value="yes">Oui</option>
+                                    <option value="no">Non</option>
                                 </select>
                             </div>
                             <button class="btn btn-dark text-white btn-block" type="submit">Enregistrer</button>

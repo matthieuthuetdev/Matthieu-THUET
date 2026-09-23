@@ -54,9 +54,11 @@
                     <p class="lead mb-4">
                         Je m'appelle Matthieu, j'ai 24 ans et je suis passionné par le développement web depuis plusieurs années. Depuis le 15 avril 2026, j'ai créé ma micro-entreprise afin de proposer mes services aux particuliers comme aux entreprises.
                     </p>
+
                     <p class="mb-0">
                         J'aime construire des sites lisibles, bien structurés et agréables à faire évoluer. Mon approche reste simple : comprendre le besoin, proposer quelque chose de juste et avancer avec clarté.
                     </p>
+
                     <div class="home-info-row mt-4">
                         <a class="home-plus-link" href="#bloc-about" data-home-toggle="about" data-turbo="false" aria-expanded="false">
                             Plus d'info
@@ -139,6 +141,7 @@
                             Une analyse concrète de ton site ou de ton application pour améliorer l'expérience réelle des utilisateurs.
                         </p>
                     </div>
+
                     <div class="home-info-row mt-4">
                         <a class="home-plus-link" href="#bloc-services" data-home-toggle="services" data-turbo="false" aria-expanded="false">
                             Plus d'info
@@ -184,7 +187,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-12 col-lg-9 text-center">
                     <p class="text-uppercase font-weight-bold home-kicker mb-3">Capsules de compétences</p>
-                    <h2 class="display-4 font-weight-bold mb-4">Des exemples concrets pour montrer ce que je sais faire</h2>
+                    <h2 class="display-4 font-weight-bold mb-4">Des exemples complets de sites web que je peux développer pour vous</h2>
                     <p class="lead mb-0">
                         Ces petites capsules présentent un échantillon de ce que je peux réaliser. Elles aident à imaginer
                         le rendu d’un projet et à voir rapidement comment je peux transformer une idée en page web.
@@ -198,7 +201,7 @@
                         <div class="home-example-preview">
                             <img
                                 class="home-example-image"
-                                src="{{ asset('assets/images/exemples/exemple-1.png') }}"
+                                src="{{ asset('images/exemples/exemple-1.png') }}"
                                 alt="Aperçu de l'exemple 1"
                                 loading="lazy"
                                 decoding="async"
@@ -219,7 +222,7 @@
                         <div class="home-example-preview">
                             <img
                                 class="home-example-image"
-                                src="{{ asset('assets/images/exemples/exemple-2.png') }}"
+                                src="{{ asset('images/exemples/exemple-2.png') }}"
                                 alt="Aperçu de l'exemple 2"
                                 loading="lazy"
                                 decoding="async"
@@ -240,7 +243,7 @@
                         <div class="home-example-preview">
                             <img
                                 class="home-example-image"
-                                src="{{ asset('assets/images/exemples/exemple-3.png') }}"
+                                src="{{ asset('images/exemples/exemple-3.png') }}"
                                 alt="Aperçu de l'exemple 3"
                                 loading="lazy"
                                 decoding="async"
@@ -302,7 +305,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -329,6 +331,7 @@
                             <div class="form-group col-md-6">{{ form_row(contactForm.companyName) }}</div>
                             <div class="form-group col-md-6">{{ form_row(contactForm.emailAddress) }}</div>
                         </div>
+
                         <div class="form-group">{{ form_row(contactForm.subject) }}</div>
                         <div class="form-group">{{ form_row(contactForm.Content) }}</div>
                         <div class="form-group home-form-checkbox">{{ form_row(contactForm.RGPD) }}</div>
