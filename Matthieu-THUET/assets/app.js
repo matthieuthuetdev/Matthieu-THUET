@@ -161,25 +161,21 @@ function initializeHomePageInteractions() {
 
             setActiveLink(link);
 
-            const navHeight = nav.offsetHeight;
+            const scrollToTarget = () => {
+                // On mobile, the collapsed menu no longer affects the navbar height.
+                scrollToElement(targetId, 'smooth');
+            };
 
-            const targetTop =
-                window.scrollY +
-                target.getBoundingClientRect().top -
-                navHeight;
+            if (navMenu?.classList.contains('show') && window.jQuery) {
+                window
+                    .jQuery(navMenu)
+                    .one('hidden.bs.collapse', scrollToTarget)
+                    .collapse('hide');
 
-            window.scrollTo({
-                top: targetTop,
-                behavior: 'smooth'
-            });
-
-            if (
-                navMenu &&
-                navMenu.classList.contains('show') &&
-                window.jQuery
-            ) {
-                window.jQuery(navMenu).collapse('hide');
+                return;
             }
+
+            scrollToTarget();
         });
     });
 

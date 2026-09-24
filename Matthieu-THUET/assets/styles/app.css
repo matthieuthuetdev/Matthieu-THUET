@@ -104,12 +104,12 @@ body::-webkit-scrollbar-thumb,
 }
 
 .home-nav-link:hover,
-.home-nav-brand:hover,
 .home-nav-link:focus,
-.home-nav-brand:focus {
-    color: #d4e6ff;
-    text-decoration: none;
-    transform: scale(1.06);
+.home-nav-link:focus-visible {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
 }
 
 .home-block-services {
