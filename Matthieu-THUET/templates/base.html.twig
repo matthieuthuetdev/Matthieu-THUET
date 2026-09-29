@@ -19,6 +19,8 @@
         <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
         {% endif %}
+        {# Kept last so it overrides Symfony's temporary default favicon above. #}
+        <link rel="icon" href="{{ asset('images/matthieu.jpg') }}" type="image/jpeg">
     </head>
     <body>
         <div class="cursor-ring" data-cursor-ring aria-hidden="true"></div>
